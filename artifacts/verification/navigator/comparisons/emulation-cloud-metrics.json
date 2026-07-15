@@ -1,0 +1,8 @@
+{
+  "label": "emulation-cloud",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 1.075,
+  "channelsOverThresholdPercent": 1.957,
+  "threshold": 12
+}

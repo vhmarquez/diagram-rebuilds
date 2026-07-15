@@ -1,0 +1,8 @@
+{
+  "label": "default",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 1.432,
+  "channelsOverThresholdPercent": 2.365,
+  "threshold": 12
+}

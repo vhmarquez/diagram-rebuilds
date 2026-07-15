@@ -1,0 +1,8 @@
+{
+  "label": "intelligent-apps",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 0.8,
+  "channelsOverThresholdPercent": 1.534,
+  "threshold": 12
+}

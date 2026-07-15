@@ -39,8 +39,15 @@ for (const asset of assetManifest.assets) {
   const renderWidth = renderWidths.get(asset.id);
 
   const sourcePath = path.join(root, asset.sourcePath);
+  const shouldCopyLosslessly =
+    asset.mimetype === "image/svg+xml" ||
+    !asset.mimetype?.startsWith("image/");
 
-  if (!renderWidth || (asset.mimetype === "image/png" && asset.bytes < 20_000)) {
+  if (
+    shouldCopyLosslessly ||
+    !renderWidth ||
+    (asset.mimetype === "image/png" && asset.bytes < 20_000)
+  ) {
     const outputName = path.basename(asset.sourcePath);
     await copyFile(sourcePath, path.join(optimizedDir, outputName));
     asset.optimizedPath = `/assets/optimized/${slug}/${outputName}`;

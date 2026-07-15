@@ -1,0 +1,8 @@
+{
+  "label": "multi-layer-controller",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 0.857,
+  "channelsOverThresholdPercent": 1.953,
+  "threshold": 12
+}

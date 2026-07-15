@@ -44,3 +44,5 @@ next-env.d.ts
 
 # local Sites development output
 .sites-dev.*.log
+.sites-prod.*.log
+.wrangler-prod.*.log

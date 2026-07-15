@@ -1,0 +1,480 @@
+.viewer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #f1f0f2;
+}
+
+.stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1280px;
+  height: 720px;
+  overflow: hidden;
+  color: #000000;
+  background: #f1f0f2;
+  font-family: "Aktiv Grotesk", Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+  transform: translate(-50%, -50%) scale(var(--navigator-scale));
+  transform-origin: center;
+}
+
+.triangle {
+  position: absolute;
+  top: 103px;
+  left: 21px;
+  z-index: 1;
+  width: 609px;
+  height: 339px;
+  object-fit: fill;
+  user-select: none;
+}
+
+.panel {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  margin: 0;
+  pointer-events: none;
+}
+
+.title,
+.body,
+.appContent p {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  white-space: pre-wrap;
+}
+
+.title {
+  color: #b20022;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 38px;
+  animation: reveal 800ms 400ms ease both;
+}
+
+.body,
+.appContent p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23px;
+  animation: reveal 800ms 400ms ease both;
+}
+
+.suiteTitle {
+  top: 76.5px;
+  left: 671px;
+  width: 590.953px;
+}
+
+.suiteBody {
+  top: 114.5px;
+  left: 671px;
+  width: 549.781px;
+}
+
+.suiteImage {
+  position: absolute;
+  top: 199px;
+  left: 670px;
+  width: 524px;
+  height: 272px;
+  object-fit: fill;
+  animation: fade-in 800ms 600ms ease both;
+}
+
+.controllerTitle {
+  top: 86.5px;
+  left: 688px;
+  width: 476.281px;
+}
+
+.controllerBody {
+  top: 124.5px;
+  left: 688px;
+  width: 572.313px;
+}
+
+.controllerImage {
+  position: absolute;
+  top: 225px;
+  left: 688px;
+  width: 570px;
+  height: 278px;
+  object-fit: fill;
+  animation: reveal 800ms 600ms ease both;
+}
+
+.cta {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 154px;
+  height: 53px;
+  color: #ffffff;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  text-decoration: none;
+  pointer-events: auto;
+  transition: opacity 300ms ease;
+}
+
+.cta::before {
+  position: absolute;
+  top: 11px;
+  left: 16px;
+  width: 120px;
+  height: 29px;
+  border-radius: 22px;
+  background: #3751a2;
+  content: "";
+}
+
+.ctaText {
+  position: absolute;
+  top: 15px;
+  left: 21px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 107px;
+  height: 26px;
+}
+
+.cta:hover {
+  opacity: 0.7;
+}
+
+.cta:focus-visible,
+.stateControl:focus-visible {
+  outline: 3px solid #b20022;
+  outline-offset: 3px;
+}
+
+.controllerCta {
+  top: 514px;
+  left: 671px;
+  width: 175px;
+  height: 64px;
+  animation: reveal 800ms 800ms ease both;
+}
+
+.controllerCta::before {
+  top: 17px;
+  left: 19px;
+  width: 136px;
+  height: 36px;
+}
+
+.controllerCta .ctaText {
+  top: 23px;
+  left: 26px;
+  width: 120px;
+  height: 26px;
+}
+
+.appsTitle {
+  top: 33.5px;
+  left: 671px;
+  width: 401.813px;
+  animation: none;
+}
+
+.appsIntro {
+  top: 69.5px;
+  left: 671px;
+  width: 585.063px;
+  animation: none;
+}
+
+.appList {
+  position: absolute;
+  inset: 0;
+}
+
+.appRow {
+  position: absolute;
+  left: 0;
+  width: 1280px;
+  pointer-events: none;
+  animation: reveal 800ms ease both;
+}
+
+.appRow1 {
+  top: 147px;
+  height: 139px;
+  animation-delay: 600ms;
+}
+
+.appRow2 {
+  top: 288px;
+  height: 112px;
+  animation-delay: 1800ms;
+}
+
+.appRow3 {
+  top: 391px;
+  height: 131px;
+  animation-delay: 2400ms;
+}
+
+.appRow4 {
+  top: 521px;
+  height: 170px;
+  animation-delay: 3000ms;
+}
+
+.appIdentity {
+  position: absolute;
+  left: 673px;
+  width: 76px;
+  text-align: center;
+}
+
+.appIcon {
+  display: block;
+  object-fit: fill;
+  margin-inline: auto;
+}
+
+.appLabel {
+  display: block;
+  margin-top: 4px;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.appContent {
+  position: absolute;
+  left: 770px;
+  width: 472.375px;
+  height: 100%;
+}
+
+.appContent p {
+  position: static;
+  width: 100%;
+  animation: none;
+}
+
+.appContent strong {
+  font-weight: 700;
+}
+
+.appContent .cta {
+  left: -16px;
+}
+
+.appRow1 .appIdentity {
+  left: 676px;
+  width: 73px;
+}
+
+.appRow1 .appIcon {
+  width: 73px;
+  height: 72px;
+}
+
+.appRow1 .appContent {
+  top: -2.5px;
+  width: 452.766px;
+}
+
+.appRow1 .appContent .cta {
+  top: 88.5px;
+}
+
+.appRow2 .appIdentity {
+  left: 676px;
+  width: 69px;
+}
+
+.appRow2 .appIcon {
+  width: 66px;
+  height: 66px;
+}
+
+.appRow2 .appLabel {
+  margin-top: -2px;
+}
+
+.appRow2 .appContent {
+  top: -0.5px;
+}
+
+.appRow3 .appIdentity {
+  left: 673px;
+  width: 76px;
+}
+
+.appRow3 .appIcon {
+  width: 76px;
+  height: 92px;
+}
+
+.appRow3 .appLabel {
+  width: 73px;
+  margin-top: -8.5px;
+  margin-left: 1px;
+  font-size: 13px;
+}
+
+.appRow3 .appContent {
+  top: 16.5px;
+  width: 455.703px;
+}
+
+.appRow3 .appContent .cta {
+  top: 61.5px;
+}
+
+.appRow3 .cta::before {
+  top: 14px;
+  width: 121px;
+}
+
+.appRow3 .ctaText {
+  top: 18px;
+  width: 109px;
+}
+
+.appRow4 .appIdentity {
+  left: 677px;
+  width: 68px;
+}
+
+.appRow4 .appIcon {
+  width: 68px;
+  height: 66px;
+}
+
+.appRow4 .appContent {
+  top: 5.5px;
+}
+
+.appRow4 .appLabel {
+  width: 67px;
+  margin-top: 2px;
+  margin-left: -1px;
+}
+
+.appRow4 .appContent .cta {
+  top: 111.5px;
+}
+
+.appRow4 .cta::before {
+  top: 13px;
+  left: 11px;
+  width: 121px;
+  height: 27px;
+}
+
+.appRow4 .ctaText {
+  top: 16px;
+  left: 16px;
+  width: 109px;
+}
+
+.emulationTitle {
+  top: 61.5px;
+  left: 688px;
+  width: 272.438px;
+}
+
+.emulationBody {
+  top: 98.5px;
+  left: 688px;
+  width: 543.906px;
+}
+
+.emulationImage {
+  position: absolute;
+  top: 195px;
+  left: 688px;
+  width: 548px;
+  height: 420px;
+  object-fit: fill;
+  animation: reveal 800ms 600ms ease both;
+}
+
+.emulationCta {
+  top: 615px;
+  left: 671px;
+  width: 186px;
+  height: 64px;
+  animation: reveal 800ms 800ms ease both;
+}
+
+.emulationCta::before {
+  top: 17px;
+  left: 15px;
+  width: 147px;
+  height: 36px;
+}
+
+.emulationCta .ctaText {
+  top: 24px;
+  left: 24px;
+  width: 131px;
+  height: 26px;
+}
+
+.stateControls {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.stateControl {
+  position: absolute;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .triangle,
+  .title,
+  .body,
+  .suiteImage,
+  .controllerImage,
+  .controllerCta,
+  .appRow,
+  .emulationImage,
+  .emulationCta {
+    animation: none;
+  }
+}

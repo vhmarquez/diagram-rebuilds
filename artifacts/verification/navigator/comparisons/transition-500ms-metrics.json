@@ -1,0 +1,8 @@
+{
+  "label": "transition-500ms",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 1.633,
+  "channelsOverThresholdPercent": 3.195,
+  "threshold": 12
+}

@@ -43,9 +43,9 @@ Shared foundation work may be completed before Page 1. After that, a page may no
 
 | Workstream | Status | Completion gate |
 | --- | --- | --- |
-| Shared foundation | Complete for Timeline | Clean build, extractor, optimizer, reference-capture workflow, and test harness verified |
-| 1. Timeline | QA passed — awaiting user approval | Internal QA passed and user approval recorded |
-| 2. Navigator | Blocked by Page 1 | Timeline approved by user |
+| Shared foundation | Complete for Timeline and Navigator | Clean build, extractor, optimizer, reference-capture workflow, and test harness verified |
+| 1. Timeline | Approved July 15, 2026 | Internal QA passed and user approval recorded |
+| 2. Navigator | QA passed — awaiting user approval | Timeline approved by user |
 | 3. RLS C&L Band | Blocked by Page 2 | Navigator approved by user |
 | 4. Liquid Spectrum | Blocked by Page 3 | RLS approved by user |
 | Final release QA | Blocked by Page 4 | All four pages approved by user |
@@ -108,12 +108,12 @@ Each page must pass all four gates, including explicit user approval, before the
 - [x] Initialize the Vite + React + TypeScript/vinext project.
 - [ ] Configure independent iframe routes as each page is approved:
   - [x] `/timeline/`
-  - [ ] `/navigator/`
+  - [x] `/navigator/`
   - [ ] `/rls/`
   - [ ] `/liquid-spectrum/`
 - [x] Configure production asset paths for nested static hosting.
 - [x] Add the shared fixed-stage scaling pattern and Timeline typography/color treatment.
-- [ ] Add shared components for hotspots, state controls, overlays, dialogs, and iframe stage scaling.
+- [x] Add reusable fixed-stage scaling, hotspot/state-control, CTA, and iframe QA patterns needed through Navigator; add overlays/dialogs when RLS unlocks them.
 - [x] Confirm GSAP is not needed for Timeline; reassess only when a later page's choreography requires it.
 - [x] Establish lint, typecheck, rendered-route tests, and production-build commands.
 - [x] Add browser-driven desktop interaction and screenshot testing.
@@ -127,7 +127,7 @@ Each page must pass all four gates, including explicit user approval, before the
 - [x] Download all original media and record checksums.
 - [x] Download and inventory required font files.
 - [x] Preserve unmodified source copies separately from optimized production assets.
-- [x] Confirm Timeline has no SVG production assets requiring optimization.
+- [x] Preserve Navigator SVG production assets losslessly; continue raster optimization only for raster media.
 - [x] Generate two-times-rendered-width WebP variants for raster photographs.
 - [x] Produce machine-readable source and runtime asset manifests.
 - [x] Verify that every live Ceros asset has a local mapped equivalent.
@@ -169,7 +169,7 @@ dist/
 
 ## Page 1 — Timeline
 
-Status: **QA passed — awaiting user approval**
+Status: **Approved July 15, 2026**
 
 ### Reference inventory
 
@@ -197,42 +197,42 @@ Status: **QA passed — awaiting user approval**
 - [x] Run the standard Gate C checklist.
 - [x] Write `artifacts/verification/timeline/report.md`.
 - [x] Mark Timeline `QA passed — awaiting user approval` and notify the user.
-- [ ] Record the user's final approval for Timeline.
-- [ ] Only after approval, mark Timeline `Approved` and start Navigator.
+- [x] Record the user's final approval for Timeline: approved in this task on July 15, 2026.
+- [x] Only after approval, mark Timeline `Approved` and start Navigator.
 
 ## Page 2 — Navigator
 
-Status: **Blocked by Timeline**
+Status: **QA passed — awaiting user approval**
 
 ### Reference inventory
 
-- [ ] Extract all 68 manifest media assets and required fonts.
-- [ ] Capture the default Navigator Network Control Suite state.
-- [ ] Capture the Navigator Multi-Layer Controller state.
-- [ ] Capture the Navigator Intelligent Apps state.
-- [ ] Capture the Emulation Cloud state.
-- [ ] Record each state's heading, body copy, screenshot, icon, triangle highlight, CTA, and destination URL.
-- [ ] Record the crossfade/slide animation sequence and timing between every state.
+- [x] Extract all 68 manifest media assets and required fonts.
+- [x] Capture the default Navigator Network Control Suite state.
+- [x] Capture the Navigator Multi-Layer Controller state.
+- [x] Capture the Navigator Intelligent Apps state.
+- [x] Capture the Emulation Cloud state.
+- [x] Record each state's heading, body copy, screenshot, icon, triangle treatment, CTA, and destination URL.
+- [x] Record the crossfade/slide animation sequence and timing between every state.
 
 ### Implementation
 
-- [ ] Build the fixed 1280×720 artboard.
-- [ ] Recreate the triangle, product icons, labels, selected-state styling, and hotspots.
-- [ ] Implement all four product states from a single data-driven detail panel.
-- [ ] Match image crops, text wrapping, CTA placement, and active highlights.
-- [ ] Match transition opacity and movement timing.
-- [ ] Preserve all external CTA destinations.
+- [x] Build the fixed 1280×720 artboard.
+- [x] Recreate the triangle, product icons, labels, reference state treatment, and hotspots.
+- [x] Implement all four product states from a single data-driven detail panel.
+- [x] Match image crops, text wrapping, CTA placement, and published visual state treatment.
+- [x] Match transition opacity and movement timing.
+- [x] Preserve all external CTA destinations.
 
 ### QA
 
-- [ ] Compare the default state to the reference.
-- [ ] Compare all three alternate states to the reference.
-- [ ] Test every triangle hotspot and state transition.
-- [ ] Test repeated switching and return to the default state.
-- [ ] Verify CTA labels and destinations without submitting or changing external data.
-- [ ] Run the standard Gate C checklist.
-- [ ] Write `artifacts/verification/navigator/report.md`.
-- [ ] Mark Navigator `QA passed — awaiting user approval` and notify the user.
+- [x] Compare the default state to the reference.
+- [x] Compare all three alternate states to the reference.
+- [x] Test every triangle hotspot and state transition.
+- [x] Test repeated switching and return to the default state.
+- [x] Verify CTA labels and destinations without submitting or changing external data.
+- [x] Run the standard Gate C checklist.
+- [x] Write `artifacts/verification/navigator/report.md`.
+- [x] Mark Navigator `QA passed — awaiting user approval` and notify the user.
 - [ ] Record the user's final approval for Navigator.
 - [ ] Only after approval, mark Navigator `Approved` and start RLS.
 
