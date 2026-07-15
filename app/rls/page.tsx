@@ -6,6 +6,6 @@ export const metadata: Metadata = {
   description: "Explore Ciena 6500 Reconfigurable Line System C-band and L-band growth.",
 };
 
-export default function Home() {
+export default function RlsPage() {
   return <RlsExperience />;
 }

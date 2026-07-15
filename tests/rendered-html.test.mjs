@@ -38,7 +38,7 @@ for (const pathname of ["/timeline"]) {
   });
 }
 
-for (const pathname of ["/", "/navigator"]) {
+for (const pathname of ["/navigator"]) {
   test(`server-renders the Navigator experience at ${pathname}`, async () => {
     const response = await render(pathname);
     assert.equal(response.status, 200);
@@ -54,12 +54,38 @@ for (const pathname of ["/", "/navigator"]) {
   });
 }
 
+for (const pathname of ["/", "/rls"]) {
+  test(`server-renders the RLS experience at ${pathname}`, async () => {
+    const response = await render(pathname);
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+    const html = await response.text();
+    assert.match(html, /<title>RLS C&amp;L Band \| Ciena<\/title>/i);
+    assert.match(html, /data-experience="ciena-rls"/);
+    assert.match(html, /Integrated C&amp;L-band amplifiers are installed/);
+    assert.match(html, /assets\/optimized\/rls/);
+    assert.match(html, /Open ROADM Site product view for Step 1/);
+    assert.doesNotMatch(html, /view\.ceros\.com|media\.ceros\.com/);
+  });
+}
+
 test("server-renders the Navigator iframe QA harness", async () => {
   const response = await render("/qa/navigator-iframe");
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /title="Navigator experience QA frame"/);
   assert.match(html, /src="\/navigator"/);
+  assert.match(html, /width:1265px/);
+  assert.match(html, /height:712px/);
+});
+
+test("server-renders the RLS iframe QA harness", async () => {
+  const response = await render("/qa/rls-iframe");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /title="RLS experience QA frame"/);
+  assert.match(html, /src="\/rls"/);
   assert.match(html, /width:1265px/);
   assert.match(html, /height:712px/);
 });

@@ -1,0 +1,8 @@
+{
+  "label": "overlay-amplifier-site",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 0.801,
+  "channelsOverThresholdPercent": 1.037,
+  "threshold": 12
+}

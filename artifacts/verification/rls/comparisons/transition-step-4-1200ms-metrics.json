@@ -1,0 +1,8 @@
+{
+  "label": "transition-step-4-1200ms",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 0.772,
+  "channelsOverThresholdPercent": 0.379,
+  "threshold": 12
+}

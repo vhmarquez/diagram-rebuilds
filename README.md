@@ -5,18 +5,20 @@ Desktop-only React/TypeScript rebuilds of four Ciena Ceros experiences. Work pro
 ## Current status
 
 - Timeline: approved July 15, 2026.
-- Navigator: QA passed, awaiting user approval.
-- RLS C&L Band: blocked until Navigator approval.
+- Navigator: approved July 15, 2026.
+- RLS C&L Band: QA passed; awaiting user approval.
 - Liquid Spectrum: blocked until RLS approval.
 
 See `BUILD_PLAN.md` for the living checklist and `artifacts/verification/` for QA evidence.
 
 ## Routes
 
-- `/` — current review page (Navigator).
+- `/` — current review page (RLS C&L Band).
 - `/timeline` — Timeline iframe entry point.
 - `/navigator` — Navigator iframe entry point.
+- `/rls` — RLS C&L Band iframe entry point.
 - `/qa/navigator-iframe` — fixed 1265 × 712 desktop embed harness.
+- `/qa/rls-iframe` — fixed 1265 × 712 desktop embed harness.
 
 Later routes are intentionally not created until the preceding page is approved.
 
@@ -41,6 +43,12 @@ Recreate the Navigator source archive and optimized assets:
 
 ```bash
 npm run assets:navigator
+```
+
+Recreate the RLS source archive and optimized assets:
+
+```bash
+npm run assets:rls
 ```
 
 ## Asset model

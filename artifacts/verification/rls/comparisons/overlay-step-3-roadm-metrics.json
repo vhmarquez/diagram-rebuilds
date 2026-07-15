@@ -1,0 +1,8 @@
+{
+  "label": "overlay-step-3-roadm",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 0.61,
+  "channelsOverThresholdPercent": 0.663,
+  "threshold": 12
+}

@@ -1,0 +1,8 @@
+{
+  "label": "step-2",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 0.666,
+  "channelsOverThresholdPercent": 0.309,
+  "threshold": 12
+}

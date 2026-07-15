@@ -43,10 +43,10 @@ Shared foundation work may be completed before Page 1. After that, a page may no
 
 | Workstream | Status | Completion gate |
 | --- | --- | --- |
-| Shared foundation | Complete for Timeline and Navigator | Clean build, extractor, optimizer, reference-capture workflow, and test harness verified |
+| Shared foundation | Complete through RLS | Clean build, extractor, optimizer, reference-capture workflow, and test harness verified |
 | 1. Timeline | Approved July 15, 2026 | Internal QA passed and user approval recorded |
-| 2. Navigator | QA passed — awaiting user approval | Timeline approved by user |
-| 3. RLS C&L Band | Blocked by Page 2 | Navigator approved by user |
+| 2. Navigator | Approved July 15, 2026 | Internal QA passed and user approval recorded |
+| 3. RLS C&L Band | QA passed — awaiting user approval | All internal QA gates passed; Liquid Spectrum remains locked |
 | 4. Liquid Spectrum | Blocked by Page 3 | RLS approved by user |
 | Final release QA | Blocked by Page 4 | All four pages approved by user |
 
@@ -109,11 +109,11 @@ Each page must pass all four gates, including explicit user approval, before the
 - [ ] Configure independent iframe routes as each page is approved:
   - [x] `/timeline/`
   - [x] `/navigator/`
-  - [ ] `/rls/`
+  - [x] `/rls/`
   - [ ] `/liquid-spectrum/`
 - [x] Configure production asset paths for nested static hosting.
 - [x] Add the shared fixed-stage scaling pattern and Timeline typography/color treatment.
-- [x] Add reusable fixed-stage scaling, hotspot/state-control, CTA, and iframe QA patterns needed through Navigator; add overlays/dialogs when RLS unlocks them.
+- [x] Add reusable fixed-stage scaling, hotspot/state-control, CTA, iframe QA, overlay, and dialog patterns needed through RLS.
 - [x] Confirm GSAP is not needed for Timeline; reassess only when a later page's choreography requires it.
 - [x] Establish lint, typecheck, rendered-route tests, and production-build commands.
 - [x] Add browser-driven desktop interaction and screenshot testing.
@@ -202,7 +202,7 @@ Status: **Approved July 15, 2026**
 
 ## Page 2 — Navigator
 
-Status: **QA passed — awaiting user approval**
+Status: **Approved July 15, 2026**
 
 ### Reference inventory
 
@@ -233,44 +233,44 @@ Status: **QA passed — awaiting user approval**
 - [x] Run the standard Gate C checklist.
 - [x] Write `artifacts/verification/navigator/report.md`.
 - [x] Mark Navigator `QA passed — awaiting user approval` and notify the user.
-- [ ] Record the user's final approval for Navigator.
-- [ ] Only after approval, mark Navigator `Approved` and start RLS.
+- [x] Record the user's final approval for Navigator: approved in this task on July 15, 2026.
+- [x] Only after approval, mark Navigator `Approved` and start RLS.
 
 ## Page 3 — RLS C&L Band
 
-Status: **Blocked by Navigator**
+Status: **QA passed — awaiting user approval**
 
 ### Reference inventory
 
-- [ ] Extract all 30 manifest media assets and required fonts.
-- [ ] Capture Step 1: Initial Installation.
-- [ ] Capture Step 2: Grow C-band traffic.
-- [ ] Capture Step 3: Expand to L-band.
-- [ ] Capture Step 4: Grow L-band traffic.
-- [ ] Record all diagram differences between the four steps.
-- [ ] Record bullet-copy changes, active/inactive step styling, and optical-spectrum changes.
-- [ ] Inventory every Product view hotspot, overlay, image, and close action.
-- [ ] Record the transition sequence and timing for step changes and overlays.
+- [x] Extract all 30 manifest media assets and required fonts.
+- [x] Capture Step 1: Initial Installation.
+- [x] Capture Step 2: Grow C-band traffic.
+- [x] Capture Step 3: Expand to L-band.
+- [x] Capture Step 4: Grow L-band traffic.
+- [x] Record all diagram differences between the four steps.
+- [x] Record bullet-copy changes, active/inactive step styling, and optical-spectrum changes.
+- [x] Inventory every Product view hotspot, overlay, image, and close action.
+- [x] Record the transition sequence and timing for step changes and overlays.
 
 ### Implementation
 
-- [ ] Build the fixed 1280×720 stage.
-- [ ] Recreate shared network, ROADM, amplifier, Raman, spectrum, transponder, and wavelength graphics.
-- [ ] Drive all four steps from explicit application state.
-- [ ] Match diagram visibility, opacity, labels, active controls, and explanatory copy per step.
-- [ ] Implement all Product view overlays and their close behavior.
-- [ ] Match state-change and overlay animations.
+- [x] Build the fixed 1280×720 stage.
+- [x] Recreate shared network, ROADM, amplifier, Raman, spectrum, transponder, and wavelength graphics.
+- [x] Drive all four steps from explicit application state.
+- [x] Match diagram visibility, opacity, labels, active controls, and explanatory copy per step.
+- [x] Implement all Product view overlays and their close behavior.
+- [x] Match state-change and overlay animations.
 
 ### QA
 
-- [ ] Compare all four step states to the corresponding live references.
-- [ ] Compare every Product view overlay.
-- [ ] Test every step control, hotspot, modal close control, and repeated state change.
-- [ ] Confirm line work and SVG symbols remain sharp at the Ciena iframe size.
-- [ ] Verify no step inherits stale elements from the previous state.
-- [ ] Run the standard Gate C checklist.
-- [ ] Write `artifacts/verification/rls/report.md`.
-- [ ] Mark RLS `QA passed — awaiting user approval` and notify the user.
+- [x] Compare all four step states to the corresponding live references.
+- [x] Compare every Product view overlay.
+- [x] Test every step control, hotspot, modal close control, and repeated state change.
+- [x] Confirm line work and SVG symbols remain sharp at the Ciena iframe size.
+- [x] Verify no step inherits stale elements from the previous state.
+- [x] Run the standard Gate C checklist.
+- [x] Write `artifacts/verification/rls/report.md`.
+- [x] Mark RLS `QA passed — awaiting user approval` and notify the user.
 - [ ] Record the user's final approval for RLS.
 - [ ] Only after approval, mark RLS `Approved` and start Liquid Spectrum.
 
