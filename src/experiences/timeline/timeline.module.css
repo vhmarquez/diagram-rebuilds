@@ -1,0 +1,40 @@
+.viewer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.stage {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1280px;
+  height: 4500px;
+  overflow: hidden;
+  transform: translateX(-50%) scale(var(--timeline-scale));
+  transform-origin: top center;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+}
+
+.fadeDown {
+  animation: fade-down 800ms ease both;
+}
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadeDown {
+    animation: none;
+  }
+}
