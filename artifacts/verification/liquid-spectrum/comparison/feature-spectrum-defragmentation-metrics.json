@@ -1,0 +1,8 @@
+{
+  "label": "feature-spectrum-defragmentation",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 5.738,
+  "channelsOverThresholdPercent": 7.334,
+  "threshold": 12
+}

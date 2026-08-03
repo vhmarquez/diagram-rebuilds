@@ -1,0 +1,8 @@
+{
+  "label": "feature-liquid-restoration",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 5.335,
+  "channelsOverThresholdPercent": 6.936,
+  "threshold": 12
+}

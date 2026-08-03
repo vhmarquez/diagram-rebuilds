@@ -1,0 +1,8 @@
+{
+  "label": "phase-operations",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 4.073,
+  "channelsOverThresholdPercent": 5.3,
+  "threshold": 12
+}

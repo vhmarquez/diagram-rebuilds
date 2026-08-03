@@ -1,0 +1,8 @@
+{
+  "label": "feature-channel-margin-gauge",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 4.947,
+  "channelsOverThresholdPercent": 6.093,
+  "threshold": 12
+}

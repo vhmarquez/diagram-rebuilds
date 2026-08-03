@@ -1,0 +1,8 @@
+{
+  "label": "phase-planning",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 4.822,
+  "channelsOverThresholdPercent": 6.023,
+  "threshold": 12
+}

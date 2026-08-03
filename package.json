@@ -15,6 +15,7 @@
     "assets:timeline": "node tools/ceros-extract/extract.mjs timeline https://media.ceros.com/ciena/doc-version-json/v11/experience-version-69af2b27e5db5.js && node tools/ceros-extract/optimize-images.mjs timeline && node tools/ceros-extract/create-runtime-data.mjs timeline",
     "assets:navigator": "node tools/ceros-extract/extract.mjs navigator https://media.ceros.com/ciena/doc-version-json/v11/experience-version-19f143a2a5d.js && node tools/ceros-extract/optimize-images.mjs navigator",
     "assets:rls": "node tools/ceros-extract/extract.mjs rls https://media.ceros.com/ciena/doc-version-json/v11/experience-version-5eea0be7efabf.js && node tools/ceros-extract/optimize-images.mjs rls",
+    "assets:liquid-spectrum": "node tools/ceros-extract/extract.mjs liquid-spectrum https://media.ceros.com/ciena/doc-version-json/v11/experience-version-662bf9eedc90c.js && node tools/ceros-extract/optimize-images.mjs liquid-spectrum && node tools/extract-liquid-spectrum-scenes.mjs",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {

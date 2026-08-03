@@ -1,0 +1,8 @@
+{
+  "label": "feature-snr-optimizer",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 6.331,
+  "channelsOverThresholdPercent": 8.147,
+  "threshold": 12
+}

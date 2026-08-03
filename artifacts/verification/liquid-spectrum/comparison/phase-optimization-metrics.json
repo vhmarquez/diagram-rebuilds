@@ -1,0 +1,8 @@
+{
+  "label": "phase-optimization",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 4.442,
+  "channelsOverThresholdPercent": 5.643,
+  "threshold": 12
+}

@@ -46,3 +46,6 @@ next-env.d.ts
 .sites-dev.*.log
 .sites-prod.*.log
 .wrangler-prod.*.log
+
+# local Codex development-server output
+/.codex-dev*.log

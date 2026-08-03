@@ -1,0 +1,8 @@
+{
+  "label": "feature-photonic-performance-gauge",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 5.666,
+  "channelsOverThresholdPercent": 7.114,
+  "threshold": 12
+}

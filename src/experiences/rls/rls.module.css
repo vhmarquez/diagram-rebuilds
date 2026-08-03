@@ -1,3 +1,24 @@
+@font-face {
+  font-family: "Aktiv Grotesk";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/assets/optimized/rls/aktiv-grotesk-light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Aktiv Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/optimized/rls/aktiv-grotesk-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Aktiv Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/assets/optimized/rls/aktiv-grotesk-bold.woff") format("woff");
+}
+
 .viewer {
   position: fixed;
   inset: 0;
@@ -13,95 +34,1160 @@
   height: 720px;
   overflow: hidden;
   background: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+  font-family: "Aktiv Grotesk", Arial, Helvetica, sans-serif;
   transform: translate(-50%, -50%) scale(var(--rls-scale));
   transform-origin: center;
-}
-
-.stateFrame,
-.roadmDialog {
-  position: absolute;
-  inset: 0;
-  width: 1280px;
-  height: 720px;
-  object-fit: fill;
-  user-select: none;
-}
-
-.stateFrame {
-  z-index: 2;
 }
 
 .stepControls {
   position: absolute;
   inset: 0;
-  z-index: 4;
+  z-index: 20;
   pointer-events: none;
 }
 
-.hotspot {
+.stepControl {
   position: absolute;
-  z-index: 4;
-  border: 0;
-  border-radius: 18px;
-  padding: 0;
-  background: transparent;
-  cursor: pointer;
+  animation: menu-in 1s ease var(--menu-delay) both;
   pointer-events: auto;
 }
 
-.hotspot:focus-visible {
+.stepEyebrow {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  color: #282a36;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+  opacity: 0.4;
+  transition: opacity 200ms ease;
+}
+
+.stepButton {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #a8b3ba;
+  border-radius: 22px;
+  background: #ffffff;
+  color: #9ba5ae;
+  cursor: pointer;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 20px;
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+
+.stepButton[aria-pressed="true"] {
+  border-color: #3851a3;
+  background: #3851a3;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.stepControl:has(.stepButton[aria-pressed="true"]) .stepEyebrow,
+.stepControl:hover .stepEyebrow {
+  opacity: 1;
+}
+
+.stepButton:hover {
+  border-color: #3851a3;
+  background: #eef1fb;
+  color: #3851a3;
+  box-shadow: 0 4px 12px rgba(56, 81, 163, 0.2);
+  transform: translateY(-1px);
+}
+
+.stepButton[aria-pressed="true"]:hover {
+  background: #31478f;
+  color: #ffffff;
+}
+
+.stepButton:focus-visible,
+.productHotspot:focus-visible,
+.closeButton:focus-visible {
   outline: 3px solid #b20022;
   outline-offset: 3px;
+}
+
+.copyRule {
+  position: absolute;
+  top: 51px;
+  left: 434px;
+  z-index: 15;
+  width: 4px;
+  height: 119px;
+  background: #0089c9;
+  animation: rule-in 650ms ease 80ms both;
+  transform-origin: top;
+}
+
+.stepCopy {
+  position: absolute;
+  top: 54px;
+  left: 469px;
+  z-index: 15;
+  width: 744px;
+  min-height: 112px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+.stepCopy ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stepCopy li {
+  position: relative;
+  max-width: 490px;
+  padding-left: 26px;
+  animation: copy-in 700ms ease var(--delay) both;
+}
+
+.stepCopy[data-step="1"] li {
+  max-width: 560px;
+}
+
+.stepCopy[data-step="3"] li {
+  max-width: 650px;
+}
+
+.stepCopy li::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #000000;
+  content: "•";
+  font-size: 24px;
+  line-height: 17px;
+}
+
+.startupHidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.scene,
+.sceneArtwork {
+  position: absolute;
+  inset: 0;
+}
+
+.scene {
+  z-index: 2;
+}
+
+.vectorScene {
+  position: absolute;
+  inset: 0;
+  width: 1280px;
+  height: 720px;
+  overflow: visible;
+  pointer-events: none;
+  shape-rendering: geometricPrecision;
+  text-rendering: geometricPrecision;
+}
+
+.vectorScene foreignObject,
+.vectorScene foreignObject div {
+  pointer-events: none;
+  user-select: none;
+}
+
+.vectorBase {
+  z-index: 2;
+}
+
+.vectorStep {
+  z-index: 3;
+}
+
+.vectorPopup {
+  z-index: 1;
+}
+
+.svgFadeIn,
+.svgFadeLeft,
+.svgFadeRight,
+.svgFadeUp,
+.svgEnlarge,
+.svgScaleTop,
+.svgScaleBottom,
+.svgScaleVerticalTop,
+.svgScaleVerticalBottom,
+.svgScaleVerticalCenter,
+.svgScaleHorizontalRight,
+.svgScaleHorizontalLeft,
+.svgShiftUp,
+.svgShiftDown,
+.svgIndicatorSequence {
+  transform-box: fill-box;
+  animation-duration: var(--svg-duration);
+  animation-delay: var(--svg-delay);
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
+
+.svgFadeIn {
+  animation-name: svg-fade-in;
+}
+
+.svgFadeLeft {
+  animation-name: svg-fade-left;
+}
+
+.svgFadeRight {
+  animation-name: svg-fade-right;
+}
+
+.svgFadeUp {
+  animation-name: svg-fade-up;
+}
+
+.svgEnlarge {
+  animation-name: svg-enlarge;
+  transform-origin: center;
+}
+
+.svgScaleTop,
+.svgScaleVerticalTop {
+  animation-name: svg-scale-vertical;
+  transform-origin: center top;
+}
+
+.svgScaleBottom,
+.svgScaleVerticalBottom {
+  animation-name: svg-scale-vertical;
+  transform-origin: center bottom;
+}
+
+.svgScaleVerticalCenter {
+  animation-name: svg-scale-vertical;
+  transform-origin: center;
+}
+
+.svgScaleHorizontalRight {
+  animation-name: svg-scale-horizontal;
+  transform-origin: left center;
+}
+
+.svgScaleHorizontalLeft {
+  animation-name: svg-scale-horizontal;
+  transform-origin: right center;
+}
+
+.svgShiftUp {
+  animation-name: svg-shift-up;
+}
+
+.svgShiftDown {
+  animation-name: svg-shift-down;
+}
+
+.svgIndicatorSequence {
+  animation-name: svg-indicator-sequence;
+}
+
+.baseDiagram {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.baseBuild {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+}
+
+.baseElement {
+  position: absolute;
+  overflow: hidden;
+}
+
+.baseElementMask {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #dce0e3;
+}
+
+.baseElement .slice {
+  z-index: 2;
+}
+
+.sceneExiting {
+  animation: scene-out 200ms ease both;
+  pointer-events: none;
+}
+
+.slice {
+  position: absolute;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform, clip-path;
+}
+
+.slice img {
+  position: absolute;
+  max-width: none;
+  object-fit: fill;
+  user-select: none;
+}
+
+.staticSlice {
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.staticSlice img {
+  position: absolute;
+  max-width: none;
+  object-fit: fill;
+  user-select: none;
+}
+
+.stateAsset {
+  position: absolute;
+  z-index: 8;
+  max-width: none;
+  pointer-events: none;
+}
+
+.assetIn {
+  animation: device-in 600ms cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both;
+}
+
+.assetStatic {
+  opacity: 1;
+}
+
+.deviceConnector {
+  position: absolute;
+  z-index: 7;
+  width: 1px;
+  height: 17px;
+  border-left: 1px solid #353743;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: center top;
+}
+
+.deviceConnector::after {
+  position: absolute;
+  top: 0;
+  left: -18px;
+  width: 36px;
+  border-top: 1px solid #353743;
+  content: "";
+}
+
+.connectorIn {
+  animation: connector-in 420ms ease var(--delay) both;
+}
+
+.lBandRoadm {
+  position: absolute;
+  top: 377px;
+  z-index: 7;
+  width: 143px;
+  height: 82px;
+  border: 2px solid #353743;
+  border-radius: 15px;
+  background: #e5e9eb;
+  pointer-events: none;
+}
+
+.lBandRoadmAnimated {
+  animation: panel-in 600ms ease var(--delay) both;
+}
+
+.lBandRoadmStatic,
+.lBandRoadmStatic .roadmVerticalLine,
+.lBandRoadmStatic .roadmHorizontalLine {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+.roadmVerticalLine,
+.roadmHorizontalLine {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  background: #353743;
+  opacity: 0;
+}
+
+.roadmVerticalLine {
+  top: 0;
+  width: 1px;
+  height: 76px;
+  animation: line-grow-vertical 400ms ease var(--delay) both;
+  transform-origin: center top;
+}
+
+.roadmHorizontalLine {
+  left: 40px;
+  width: 78px;
+  height: 1px;
+  animation: line-grow-horizontal 400ms ease var(--delay) both;
+  transform-origin: left center;
+}
+
+.roadmAse {
+  position: absolute;
+  right: 5px;
+  bottom: 3px;
+  z-index: 9;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.roadmUpgradeLabel {
+  position: absolute;
+  top: 84px;
+  left: 35px;
+  z-index: 9;
+  width: 108px;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 12px;
+  text-align: center;
+}
+
+.lBandRoadmRight .roadmUpgradeLabel {
+  left: 0;
+  width: 105px;
+}
+
+.stepThreeHighlight {
+  position: absolute;
+  z-index: 6;
+  border: 2px solid rgba(230, 151, 37, 0.78);
+  background: rgba(255, 222, 168, 0.74);
+  animation: step-three-highlight 1500ms ease 1450ms both;
+  pointer-events: none;
+}
+
+.highlightRoadmLeft {
+  top: 372px;
+  left: 101px;
+  width: 155px;
+  height: 93px;
+  border-radius: 16px;
+}
+
+.highlightRoadmRight {
+  top: 372px;
+  left: 1026px;
+  width: 155px;
+  height: 93px;
+  border-radius: 16px;
+}
+
+.highlightTransponderLeft {
+  top: 532px;
+  left: 133px;
+  width: 48px;
+  height: 42px;
+  animation-delay: 2000ms;
+}
+
+.highlightTransponderRight {
+  top: 522px;
+  left: 1103px;
+  width: 48px;
+  height: 42px;
+  animation-delay: 2000ms;
+}
+
+.lBandAddDropElement {
+  position: absolute;
+  z-index: 9;
+  width: 104px;
+  height: 68px;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 12px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.lBandAddDropElement img {
+  position: absolute;
+  top: 0;
+  width: 41px;
+  height: 31px;
+}
+
+.lBandAddDropElement span {
+  position: absolute;
+  top: 7px;
+  width: 72px;
+}
+
+.lBandAddDropLeft {
+  top: 492px;
+  left: 111px;
+}
+
+.lBandAddDropLeft img {
+  left: 20px;
+}
+
+.lBandAddDropLeft span {
+  left: 64px;
+}
+
+.lBandAddDropRight {
+  top: 482px;
+  left: 1087px;
+}
+
+.lBandAddDropRight img {
+  left: 34px;
+}
+
+.lBandAddDropRight span {
+  left: -56px;
+}
+
+.spectrumScene {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.spectrumCanvasMask {
+  position: absolute;
+  top: 451px;
+  left: 389px;
+  width: 368px;
+  height: 119px;
+  background: #e8ecee;
+}
+
+.spectrumCanvasMask::after {
+  position: absolute;
+  top: -9px;
+  left: 368px;
+  width: 181px;
+  height: 121px;
+  background: #e8ecee;
+  content: "";
+}
+
+.spectrumBar {
+  position: absolute;
+  top: 456px;
+  z-index: 2;
+  width: 6px;
+  height: 114px;
+  animation: wavelength-in 400ms cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both;
+  transform-origin: center bottom;
+}
+
+.spectrumBarStatic {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+.blue {
+  background: #39539c;
+}
+
+.blueAse {
+  background: #579bcb;
+}
+
+.red {
+  background: #c52637;
+}
+
+.redAse {
+  background: #f24d43;
+}
+
+.bulkAse {
+  position: absolute;
+  top: 457px;
+  left: 587px;
+  z-index: 1;
+  width: 159px;
+  height: 113px;
+  background: #f2483f;
+  transform-origin: center bottom;
+}
+
+.bulkAseIn {
+  animation: wavelength-in 800ms cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both;
+}
+
+.spectrumElement,
+.spectrumMenu {
+  position: absolute;
+  z-index: 5;
+  opacity: 0;
+  animation: spectrum-element-in 800ms ease var(--delay) both;
+}
+
+.spectrumMenu {
+  width: 23px;
+  height: 23px;
+}
+
+.spectrumTag {
+  min-height: 31px;
+  border: 2px solid #ffffff;
+  background: #3a454e;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 13px;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 1px #7f898e;
+}
+
+.verticalBandLabel {
+  display: grid;
+  width: 24px;
+  height: 65px;
+  place-items: center;
+  background: #3a454e;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.verticalAseLabel {
+  height: 66px;
+  min-height: 66px;
+  font-size: 9px;
+  line-height: 10px;
+  writing-mode: vertical-rl;
+  transform: none;
+}
+
+.spectrumExplanation {
+  color: #000000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 12px;
+}
+
+.fade {
+  animation: layer-fade var(--duration) ease var(--delay) both;
+}
+
+.fadeDown {
+  animation: layer-fade-down var(--duration) cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both;
+}
+
+.fadeUp {
+  animation: layer-fade-up var(--duration) cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both;
+}
+
+.grow {
+  animation: layer-grow var(--duration) cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both;
+  transform-origin: center bottom;
+}
+
+.revealLeft {
+  animation: layer-reveal-left var(--duration) cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both;
+}
+
+.revealRight {
+  animation: layer-reveal-right var(--duration) cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both;
+}
+
+.pop {
+  animation: layer-pop var(--duration) cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both;
+}
+
+.signalPulse {
+  position: absolute;
+  top: 456px;
+  left: 386px;
+  z-index: 5;
+  width: 368px;
+  height: 119px;
+  border-radius: 4px;
+  animation: signal-flash 700ms ease var(--delay) both;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.edgeHardware {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.siteLower {
+  position: absolute;
+  width: 224px;
+  border-right: 2px solid #90999d;
+  border-bottom: 2px solid #90999d;
+  border-left: 2px solid #90999d;
+  border-radius: 0 0 17px 17px;
+  background: #ffffff;
+  animation: layer-fade 520ms ease 720ms both;
+}
+
+.edgeLeft .siteLower {
+  left: 40px;
+}
+
+.edgeRight .siteLower {
+  left: 1017px;
+}
+
+.addDropGroup {
+  position: absolute;
+  top: 463px;
+  width: 224px;
+  height: 68px;
+  animation: layer-fade-down 620ms cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 12px;
+  text-align: center;
+}
+
+.edgeLeft .addDropGroup {
+  left: 40px;
+}
+
+.edgeRight .addDropGroup {
+  left: 1017px;
+}
+
+.cBandAddDrop,
+.lBandAddDrop {
+  position: absolute;
+  top: 0;
+  width: 70px;
+  height: 68px;
+  isolation: isolate;
+}
+
+.cBandAddDrop span,
+.lBandAddDrop span {
+  position: absolute;
+  top: 0;
+  width: 70px;
+}
+
+.cBandAddDrop img,
+.lBandAddDrop img {
+  position: absolute;
+  top: 29px;
+  left: 15px;
+  width: 41px;
+  height: 31px;
+}
+
+.edgeLeft .cBandAddDrop {
+  left: 20px;
+}
+
+.edgeLeft .cBandAddDrop span {
+  left: 0;
+}
+
+.edgeLeft .lBandAddDrop {
+  left: 74px;
+  width: 110px;
+}
+
+.edgeLeft .lBandAddDrop span {
+  left: 35px;
+}
+
+.edgeRight .lBandAddDrop {
+  left: 88px;
+  width: 110px;
+}
+
+.edgeRight .lBandAddDrop span {
+  left: -30px;
+}
+
+.edgeRight .cBandAddDrop {
+  left: 133px;
+}
+
+.edgeRight .cBandAddDrop span {
+  left: 15px;
+}
+
+.edgeHardware[data-highlight="true"] .lBandAddDrop::after {
+  position: absolute;
+  top: 25px;
+  left: 10px;
+  z-index: -1;
+  width: 48px;
+  height: 38px;
+  border: 1px solid rgba(230, 151, 37, 0.75);
+  background: rgba(255, 222, 168, 0.78);
+  content: "";
+}
+
+.edgeHardware[data-highlight="true"].edgeLeft .transponder:nth-child(3),
+.edgeHardware[data-highlight="true"].edgeRight .transponder:nth-child(1) {
+  box-shadow: 0 0 0 4px rgba(255, 222, 168, 0.9);
+}
+
+.connectorLines {
+  position: absolute;
+  top: 522px;
+  width: 150px;
+  height: 19px;
+  border-top: 1px solid #3f464b;
+  opacity: 0;
+  animation: layer-fade 380ms ease 1320ms both;
+}
+
+.connectorLines::before,
+.connectorLines::after {
+  position: absolute;
+  top: -1px;
+  height: 18px;
+  border-left: 1px solid #3f464b;
+  content: "";
+}
+
+.connectorLines::before {
+  left: 45px;
+}
+
+.connectorLines::after {
+  right: 45px;
+}
+
+.edgeLeft .connectorLines {
+  left: 50px;
+}
+
+.edgeRight .connectorLines {
+  left: 1065px;
+}
+
+.transponderRow {
+  position: absolute;
+  top: 538px;
+  display: flex;
+  gap: 5px;
+  height: 34px;
+}
+
+.edgeLeft .transponderRow {
+  left: 50px;
+}
+
+.edgeRight .transponderRow {
+  left: 1065px;
+}
+
+.edgeLeft .transponderRow[data-count="1"] {
+  transform: translateX(44px);
+}
+
+.edgeRight .transponderRow[data-count="1"],
+.edgeRight .transponderRow[data-count="2"] {
+  transform: translateX(87px);
+}
+
+.transponder {
+  position: relative;
+  display: block;
+  width: 38px;
+  height: 33px;
+  border: 1px solid #3f464b;
+  background:
+    linear-gradient(#889197, #889197) 7px 6px / 24px 2px no-repeat,
+    linear-gradient(#889197, #889197) 7px 11px / 24px 2px no-repeat,
+    linear-gradient(#889197, #889197) 7px 16px / 24px 2px no-repeat,
+    #f5f5f2;
+  animation: layer-pop 620ms cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both;
+  box-shadow: 0 0 0 3px #ffffff;
+}
+
+.transponder::after {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  height: 8px;
+  background: #d51f2a;
+  content: "";
+}
+
+.transponderLabel {
+  position: absolute;
+  top: 576px;
+  width: 120px;
+  animation: layer-fade-up 480ms ease var(--delay) both;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+  text-align: center;
+}
+
+.edgeLeft .transponderLabel {
+  left: 72px;
+}
+
+.edgeRight .transponderLabel {
+  left: 1113px;
+}
+
+.productButtonVisual {
+  position: absolute;
+  top: 592px;
+  left: 77px;
+  z-index: 7;
+  width: 145px;
+  height: 35px;
+  border-radius: 22px;
+  background: #f68e00;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 35px;
+  text-align: center;
+  animation: layer-fade-up 520ms ease 1640ms both;
+  pointer-events: none;
+}
+
+.productHotspot {
+  position: absolute;
+  z-index: 25;
+  border: 0;
+  border-radius: 44px;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.productHotspot::after {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  border: 2px solid #f18a00;
+  border-radius: inherit;
+  background: #ffffff;
+  content: "";
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.productHotspot::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  color: #f18a00;
+  content: "Product view";
+  font-family: "Aktiv Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 34px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.productHotspot:hover::after,
+.productHotspot:hover::before {
+  opacity: 1;
+}
+
+.roadmHotspot {
+  top: 592px;
+  left: 78px;
+  width: 144px;
+  height: 34px;
+}
+
+.amplifierHotspot {
+  top: 380px;
+  left: 569px;
+  width: 144px;
+  height: 34px;
 }
 
 .dialogLayer {
   position: absolute;
   inset: 0;
-  z-index: 10;
-  animation: dialog-in 200ms ease both;
+  z-index: 50;
   outline: 0;
 }
 
-.roadmDialog {
-  z-index: 1;
+.vectorCloseHotspot {
+  position: absolute;
+  z-index: 12;
+  width: 68px;
+  height: 64px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.vectorCloseHotspot:focus-visible {
+  border-radius: 8px;
+  outline: 3px solid #b20022;
+  outline-offset: -8px;
+}
+
+.vectorRoadmClose {
+  top: 73px;
+  left: 1175px;
+}
+
+.vectorAmplifierClose {
+  top: 163px;
+  left: 1175px;
 }
 
 .dialogBackdrop {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.8);
+  animation: backdrop-in 320ms ease both;
+  backdrop-filter: blur(2px);
 }
 
-.amplifierDialog {
+.dialogShell {
   position: absolute;
+  border: 1px solid #7f898e;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+  animation: shell-in 550ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: center;
+}
+
+.roadmShell {
+  top: 74px;
+  left: 36px;
+  width: 1208px;
+  height: 558px;
+}
+
+.amplifierShell {
   top: 169px;
   left: 36px;
-  z-index: 2;
   width: 1208px;
   height: 445px;
-  border-radius: 18px;
-  box-shadow: 0 6px 17px rgba(0, 0, 0, 0.2);
-  object-fit: fill;
-  user-select: none;
 }
 
-.closeHotspot {
-  z-index: 3;
-  width: 67px;
-  height: 64px;
-  border-radius: 0;
+.dialogClosing {
+  animation: dialog-out 220ms ease both;
+  pointer-events: none;
+}
+
+.annotationPulse {
+  position: absolute;
+  z-index: 4;
+  width: 44px;
+  height: 44px;
+  border: 5px solid rgba(246, 142, 0, 0.45);
+  border-radius: 50%;
+  animation: annotation-in 700ms cubic-bezier(0.22, 1, 0.36, 1) 1350ms both;
+  box-shadow: 0 0 0 8px rgba(246, 142, 0, 0.18);
+  pointer-events: none;
+}
+
+.roadmPulseOne {
+  top: 210px;
+  left: 677px;
+  animation-delay: 1900ms;
+}
+
+.roadmPulseTwo {
+  top: 342px;
+  left: 245px;
+  animation-delay: 2200ms;
+}
+
+.amplifierPulseOne {
+  top: 206px;
+  left: 649px;
+}
+
+.amplifierPulseTwo {
+  top: 258px;
+  left: 344px;
+  animation-delay: 1580ms;
+}
+
+.closeButton {
+  position: absolute;
+  z-index: 10;
+  width: 55px;
+  height: 55px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #26323a;
+  cursor: pointer;
+  font: 300 34px/55px Arial, sans-serif;
+  opacity: 0;
+  animation: close-in 350ms ease 500ms both;
+  transition:
+    color 200ms ease,
+    transform 200ms ease;
+}
+
+.closeButton:hover {
+  color: #b20022;
+  transform: rotate(90deg);
 }
 
 .roadmClose {
-  top: 79px;
-  left: 1175px;
+  top: 74px;
+  left: 1174px;
 }
 
 .amplifierClose {
-  top: 163px;
-  left: 1175px;
+  top: 169px;
+  left: 1174px;
+}
+
+.closeButton span {
+  display: block;
 }
 
 .srOnly {
@@ -114,18 +1200,236 @@
   white-space: nowrap;
 }
 
-@keyframes dialog-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+@keyframes menu-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes rule-in {
+  from { opacity: 0; transform: scaleY(0); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes copy-in {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scene-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes layer-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes layer-fade-down {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes layer-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes layer-grow {
+  from { opacity: 0; transform: scaleY(0); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes layer-reveal-left {
+  from { opacity: 0; clip-path: inset(0 100% 0 0); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+
+@keyframes layer-reveal-right {
+  from { opacity: 0; clip-path: inset(0 0 0 100%); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+
+@keyframes layer-pop {
+  from { opacity: 0; transform: scale(0.82); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes signal-flash {
+  0%, 100% { opacity: 0; transform: scale(0.99); }
+  35% { opacity: 0.85; }
+  68% { opacity: 0.25; transform: scale(1.015); }
+}
+
+@keyframes backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shell-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes dialog-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes annotation-in {
+  0% { opacity: 0; transform: scale(0.3); }
+  65% { opacity: 1; transform: scale(1.16); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+@keyframes close-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes device-in {
+  from { opacity: 0; transform: scale(0.78); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes connector-in {
+  from { opacity: 0; transform: scaleY(0); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes panel-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes line-grow-vertical {
+  from { opacity: 0; transform: scaleY(0); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes line-grow-horizontal {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes wavelength-in {
+  from { opacity: 0; transform: scaleY(0); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes spectrum-element-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes svg-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes svg-fade-left {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes svg-fade-right {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes svg-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes svg-enlarge {
+  from { opacity: 0; transform: scale(0); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes svg-scale-vertical {
+  from { opacity: 0; transform: scaleY(0); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes svg-scale-horizontal {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes svg-shift-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes svg-shift-down {
+  from { opacity: 0; transform: translateY(-24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes svg-indicator-sequence {
+  0%, 100% { opacity: 0; }
+  20%, 38%, 56%, 74% { opacity: 1; }
+  29%, 47%, 65% { opacity: 0.25; }
+}
+
+@keyframes step-three-highlight {
+  0%, 100% { opacity: 0; }
+  20%, 72% { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .stateFrame,
-  .dialogLayer {
+  .stepControl,
+  .copyRule,
+  .stepCopy li,
+  .sceneExiting,
+  .slice,
+  .signalPulse,
+  .siteLower,
+  .addDropGroup,
+  .connectorLines,
+  .transponder,
+  .transponderLabel,
+  .productButtonVisual,
+  .dialogBackdrop,
+  .dialogShell,
+  .dialogClosing,
+  .annotationPulse,
+  .closeButton,
+  .assetIn,
+  .connectorIn,
+  .lBandRoadmAnimated,
+  .roadmVerticalLine,
+  .roadmHorizontalLine,
+  .spectrumBar,
+  .bulkAseIn,
+  .spectrumElement,
+  .spectrumMenu,
+  .stepThreeHighlight,
+  .svgFadeIn,
+  .svgFadeLeft,
+  .svgFadeRight,
+  .svgFadeUp,
+  .svgEnlarge,
+  .svgScaleTop,
+  .svgScaleBottom,
+  .svgScaleVerticalTop,
+  .svgScaleVerticalBottom,
+  .svgScaleVerticalCenter,
+  .svgScaleHorizontalRight,
+  .svgScaleHorizontalLeft,
+  .svgShiftUp,
+  .svgShiftDown,
+  .svgIndicatorSequence {
     animation: none;
+    clip-path: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .stepButton,
+  .productHotspot::after,
+  .closeButton {
+    transition: none;
   }
 }

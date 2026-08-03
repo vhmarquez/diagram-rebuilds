@@ -1,0 +1,8 @@
+{
+  "label": "phase-liquid-spectrum",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 4.187,
+  "channelsOverThresholdPercent": 5.647,
+  "threshold": 12
+}

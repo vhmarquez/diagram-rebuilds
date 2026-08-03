@@ -1,6 +1,6 @@
 # Ciena Interactive Experience Rebuild Plan
 
-Last updated: July 15, 2026
+Last updated: July 16, 2026
 
 This is the living implementation and QA checklist for replacing the four Ceros experiences. It must be updated as work progresses so the current status, evidence, open risks, and approved deviations are not left only in chat.
 
@@ -43,12 +43,12 @@ Shared foundation work may be completed before Page 1. After that, a page may no
 
 | Workstream | Status | Completion gate |
 | --- | --- | --- |
-| Shared foundation | Complete through RLS | Clean build, extractor, optimizer, reference-capture workflow, and test harness verified |
+| Shared foundation | Complete through Liquid Spectrum | Clean build, extractor, optimizer, reference-capture workflow, and test harness verified |
 | 1. Timeline | Approved July 15, 2026 | Internal QA passed and user approval recorded |
 | 2. Navigator | Approved July 15, 2026 | Internal QA passed and user approval recorded |
-| 3. RLS C&L Band | QA passed — awaiting user approval | All internal QA gates passed; Liquid Spectrum remains locked |
-| 4. Liquid Spectrum | Blocked by Page 3 | RLS approved by user |
-| Final release QA | Blocked by Page 4 | All four pages approved by user |
+| 3. RLS C&L Band | Approved July 16, 2026 | Internal QA passed and user approval recorded |
+| 4. Liquid Spectrum | QA passed — awaiting user approval | Gates A–C complete; verified preview and evidence ready |
+| Final release QA | Blocked by Page 4 approval | All four pages approved by user |
 
 ## Standard page gates
 
@@ -56,48 +56,48 @@ Each page must pass all four gates, including explicit user approval, before the
 
 ### Gate A — Reference locked
 
-- [ ] Capture the default desktop reference at its native artboard size.
-- [ ] Capture the experience inside the live Ciena iframe at the current desktop dimensions.
-- [ ] Inventory every visible state, control, hover behavior, link, overlay, and modal.
-- [ ] Record animation start states, end states, sequencing, easing, and approximate duration.
-- [ ] Extract all referenced graphics, fonts, and content.
-- [ ] Record original asset URLs, dimensions, MIME types, and checksums.
-- [ ] Confirm the state/interaction inventory is complete before implementation begins.
+- [x] Capture the default desktop reference at its native artboard size.
+- [x] Capture the experience inside the live Ciena iframe at the current desktop dimensions.
+- [x] Inventory every visible state, control, hover behavior, link, overlay, and modal.
+- [x] Record animation start states, end states, sequencing, easing, and approximate duration.
+- [x] Extract all referenced graphics, fonts, and content.
+- [x] Record original asset URLs, dimensions, MIME types, and checksums.
+- [x] Confirm the state/interaction inventory is complete before implementation begins.
 
 ### Gate B — Implementation complete
 
-- [ ] Match the fixed artboard dimensions and iframe aspect ratio.
-- [ ] Match layout, typography, colors, borders, imagery, and layering.
-- [ ] Implement every recorded interactive state.
-- [ ] Match the animation choreography and timing closely enough that no visible behavior is missing.
-- [ ] Use locally stored assets only.
-- [ ] Add accessible names, keyboard operation, focus handling, and valid interactive semantics without changing the visual design.
-- [ ] Provide a static production entry point that can run independently inside an iframe.
+- [x] Match the fixed artboard dimensions and iframe aspect ratio.
+- [x] Match layout, typography, colors, borders, imagery, and layering.
+- [x] Implement every recorded interactive state.
+- [x] Match the animation choreography and timing closely enough that no visible behavior is missing.
+- [x] Use locally stored assets only.
+- [x] Add accessible names, keyboard operation, focus handling, and valid interactive semantics without changing the visual design.
+- [x] Provide a static production entry point that can run independently inside an iframe.
 
 ### Gate C — Internal QA passed
 
-- [ ] TypeScript check passes.
-- [ ] Linting passes.
-- [ ] Unit/component tests pass where applicable.
-- [ ] Production build passes from a clean checkout.
-- [ ] Automated interaction tests cover every recorded state.
-- [ ] Reference and rebuild screenshots exist for every state.
-- [ ] Overlay/difference review shows no unexplained layout, copy, color, or asset mismatch.
-- [ ] Animation review covers representative transition frames as well as final states.
-- [ ] Mouse, keyboard, focus, close, previous, next, and return-to-default behavior all work where applicable.
-- [ ] Browser console has no application errors.
-- [ ] Network inspection shows no failed requests and no runtime dependencies on Ceros.
-- [ ] The experience works inside a local iframe using the same sizing model as the Ciena host page.
-- [ ] A page-specific QA report records tests, evidence, defects found, fixes, and any intentional deviations.
+- [x] TypeScript check passes.
+- [x] Linting passes.
+- [x] Unit/component tests pass where applicable.
+- [x] Production build passes from a clean checkout.
+- [x] Automated interaction tests cover every recorded state.
+- [x] Reference and rebuild screenshots exist for every state.
+- [x] Overlay/difference review shows no unexplained layout, copy, color, or asset mismatch.
+- [x] Animation review covers representative transition frames as well as final states.
+- [x] Mouse, keyboard, focus, close, previous, next, and return-to-default behavior all work where applicable.
+- [x] Browser console has no application errors.
+- [x] Network inspection shows no failed requests and no runtime dependencies on Ceros.
+- [x] The experience works inside a local iframe using the same sizing model as the Ciena host page.
+- [x] A page-specific QA report records tests, evidence, defects found, fixes, and any intentional deviations.
 
 ### Gate D — User approval
 
-- [ ] All Gate A, B, and C items are complete.
-- [ ] No known high- or medium-severity defect remains.
-- [ ] Verification evidence is organized and readable.
-- [ ] The page is marked `QA passed — awaiting user approval` in the status summary.
-- [ ] Notify the user that internal QA passed and provide the verified preview and evidence.
-- [ ] Pause all implementation work on later pages while approval is pending.
+- [x] All Gate A, B, and C items are complete.
+- [x] No known high- or medium-severity defect remains.
+- [x] Verification evidence is organized and readable.
+- [x] The page is marked `QA passed — awaiting user approval` in the status summary.
+- [x] Notify the user that internal QA passed and provide the verified preview and evidence.
+- [x] Pause all implementation work on later pages while approval is pending.
 - [ ] Record the user's explicit final approval in this plan.
 - [ ] Mark the page `Approved` and unlock the next page only after approval is received.
 
@@ -110,7 +110,7 @@ Each page must pass all four gates, including explicit user approval, before the
   - [x] `/timeline/`
   - [x] `/navigator/`
   - [x] `/rls/`
-  - [ ] `/liquid-spectrum/`
+  - [x] `/liquid-spectrum/`
 - [x] Configure production asset paths for nested static hosting.
 - [x] Add the shared fixed-stage scaling pattern and Timeline typography/color treatment.
 - [x] Add reusable fixed-stage scaling, hotspot/state-control, CTA, iframe QA, overlay, and dialog patterns needed through RLS.
@@ -238,7 +238,7 @@ Status: **Approved July 15, 2026**
 
 ## Page 3 — RLS C&L Band
 
-Status: **QA passed — awaiting user approval**
+Status: **Approved July 16, 2026**
 
 ### Reference inventory
 
@@ -259,55 +259,61 @@ Status: **QA passed — awaiting user approval**
 - [x] Drive all four steps from explicit application state.
 - [x] Match diagram visibility, opacity, labels, active controls, and explanatory copy per step.
 - [x] Implement all Product view overlays and their close behavior.
-- [x] Match state-change and overlay animations.
+- [x] Match state-change and overlay animations after the July 15 animation-parity audit.
+- [x] Replace screenshot-backed diagram and spectrum crops with the recovered Ceros SVG/component hierarchy.
+- [x] Preserve the source 5-second Step 1 and 7-second step-interaction triggers.
+- [x] Render all Product view annotation graphics from the original SVG/component data; retain raster only for source product photography.
+- [x] Match the site-title gray header fills and Product view button default/hover box styling after final user comparison.
 
 ### QA
 
-- [x] Compare all four step states to the corresponding live references.
-- [x] Compare every Product view overlay.
-- [x] Test every step control, hotspot, modal close control, and repeated state change.
+- [x] Compare all four step states and timed animation sequences to the corresponding live references.
+- [x] Compare live/local element states at 350–500 ms and 1.05–1.25 s after step selection.
+- [x] Compare every Product view overlay, including staged entrances and exits.
+- [x] Test every step control, hover state, hotspot, modal close control, and repeated state change.
 - [x] Confirm line work and SVG symbols remain sharp at the Ciena iframe size.
 - [x] Verify no step inherits stale elements from the previous state.
-- [x] Run the standard Gate C checklist.
-- [x] Write `artifacts/verification/rls/report.md`.
-- [x] Mark RLS `QA passed — awaiting user approval` and notify the user.
-- [ ] Record the user's final approval for RLS.
-- [ ] Only after approval, mark RLS `Approved` and start Liquid Spectrum.
+- [x] Run the standard Gate C checklist again after animation remediation.
+- [x] Update `artifacts/verification/rls/report.md` with timed-animation evidence.
+- [x] Regenerate settled rebuild and iframe evidence after native-SVG remediation.
+- [x] Mark RLS `QA passed — awaiting user approval` again and notify the user.
+- [x] Record the user's final approval for RLS: approved in this task on July 16, 2026.
+- [x] Only after approval, mark RLS `Approved` and start Liquid Spectrum.
 
 ## Page 4 — Liquid Spectrum
 
-Status: **Blocked by RLS**
+Status: **QA passed — awaiting user approval**
 
 ### Reference inventory
 
-- [ ] Extract all 37 manifest media assets and required fonts.
-- [ ] Inventory the Planning, Delivery, Operations, and Optimization lifecycle states.
-- [ ] Inventory every feature/question/detail panel reachable within each lifecycle state.
-- [ ] Record all Previous, Next, close, phase-selection, and feature-selection behavior.
-- [ ] Record every icon, chart, gauge, diagram, image, heading, description, and selected-state treatment.
-- [ ] Record panel entrance/exit sequencing, crossfades, vertical scaling, icon movement, and lifecycle rotation/highlight changes.
-- [ ] Build a complete state-transition matrix before implementation.
+- [x] Extract all 37 manifest media assets and required fonts.
+- [x] Inventory the Planning, Delivery, Operations, and Optimization lifecycle states, plus the Liquid Spectrum center state.
+- [x] Inventory every feature/question/detail panel reachable within each lifecycle state.
+- [x] Record all Previous, Next, close, phase-selection, and feature-selection behavior.
+- [x] Record every icon, chart, gauge, diagram, image, heading, description, and selected-state treatment.
+- [x] Record panel entrance/exit sequencing, crossfades, vertical scaling, icon movement, and lifecycle rotation/highlight changes.
+- [x] Build a complete state-transition matrix before implementation.
 
 ### Implementation
 
-- [ ] Build the fixed 1280×720 stage.
-- [ ] Recreate the lifecycle ring, phase controls, center graphics, arrows, panel shell, and navigation controls.
-- [ ] Implement the full state matrix from data rather than duplicated markup.
-- [ ] Render the correct detail panel, chart, icon, copy, and lifecycle highlight for every state.
-- [ ] Implement Previous, Next, close, and direct phase-selection behavior.
-- [ ] Match the multi-stage animation choreography and timing.
-- [ ] Prevent rapid or repeated input from leaving the experience in an invalid mixed state.
+- [x] Build the fixed 1280×720 stage.
+- [x] Recreate the lifecycle ring, phase controls, center graphics, arrows, panel shell, and navigation controls.
+- [x] Implement the full state matrix from data rather than duplicated markup.
+- [x] Render the correct detail panel, chart, icon, copy, and lifecycle highlight for every state.
+- [x] Implement Previous, Next, close, and direct phase-selection behavior.
+- [x] Match the multi-stage animation choreography and timing.
+- [x] Prevent rapid or repeated input from leaving the experience in an invalid mixed state.
 
 ### QA
 
-- [ ] Compare every lifecycle phase and every nested detail state to the live reference.
-- [ ] Exercise every valid state transition.
-- [ ] Test Previous/Next boundaries, close/reset behavior, direct phase changes, and rapid repeated clicks.
-- [ ] Verify no hidden panel remains visually or interactively active.
-- [ ] Compare representative transition frames as well as settled states.
-- [ ] Run the standard Gate C checklist.
-- [ ] Write `artifacts/verification/liquid-spectrum/report.md`.
-- [ ] Mark Liquid Spectrum `QA passed — awaiting user approval` and notify the user.
+- [x] Compare every lifecycle phase and every nested detail state to the live reference.
+- [x] Exercise every valid state transition.
+- [x] Test Previous/Next boundaries, close/reset behavior, direct phase changes, and rapid repeated clicks.
+- [x] Verify no hidden panel remains visually or interactively active.
+- [x] Compare representative transition frames as well as settled states.
+- [x] Run the standard Gate C checklist.
+- [x] Write `artifacts/verification/liquid-spectrum/report.md`.
+- [x] Mark Liquid Spectrum `QA passed — awaiting user approval` and notify the user.
 - [ ] Record the user's final approval for Liquid Spectrum.
 - [ ] Only after approval, mark Liquid Spectrum `Approved` and start final release QA.
 

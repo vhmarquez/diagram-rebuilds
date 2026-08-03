@@ -1,0 +1,8 @@
+{
+  "label": "feature-bandwidth-optimizer",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 6.996,
+  "channelsOverThresholdPercent": 8.27,
+  "threshold": 12
+}

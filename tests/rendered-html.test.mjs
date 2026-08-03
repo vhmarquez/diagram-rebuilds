@@ -63,9 +63,32 @@ for (const pathname of ["/", "/rls"]) {
     const html = await response.text();
     assert.match(html, /<title>RLS C&amp;L Band \| Ciena<\/title>/i);
     assert.match(html, /data-experience="ciena-rls"/);
+    assert.match(html, /data-renderer="native-svg"/);
+    assert.match(html, /data-native-svg="true"/);
     assert.match(html, /Integrated C&amp;L-band amplifiers are installed/);
     assert.match(html, /assets\/optimized\/rls/);
     assert.match(html, /Open ROADM Site product view for Step 1/);
+    assert.doesNotMatch(html, /<canvas\b/i);
+    assert.doesNotMatch(html, /view\.ceros\.com|media\.ceros\.com/);
+  });
+}
+
+for (const pathname of ["/liquid-spectrum"]) {
+  test(`server-renders the Liquid Spectrum experience at ${pathname}`, async () => {
+    const response = await render(pathname);
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+    const html = await response.text();
+    assert.match(html, /<title>Liquid Spectrum \| Ciena<\/title>/i);
+    assert.match(html, /data-experience="ciena-liquid-spectrum"/);
+    assert.match(html, /data-renderer="native-svg"/);
+    assert.match(html, /data-native-svg="true"/);
+    assert.match(html, /Channel Margin Gauge/);
+    assert.match(html, /Show Planning Tool Calibrator/);
+    assert.match(html, /Show SNR Optimizer/);
+    assert.match(html, /assets\/optimized\/liquid-spectrum/);
+    assert.doesNotMatch(html, /<canvas\b/i);
     assert.doesNotMatch(html, /view\.ceros\.com|media\.ceros\.com/);
   });
 }
@@ -86,6 +109,16 @@ test("server-renders the RLS iframe QA harness", async () => {
   const html = await response.text();
   assert.match(html, /title="RLS experience QA frame"/);
   assert.match(html, /src="\/rls"/);
+  assert.match(html, /width:1265px/);
+  assert.match(html, /height:712px/);
+});
+
+test("server-renders the Liquid Spectrum iframe QA harness", async () => {
+  const response = await render("/qa/liquid-spectrum-iframe");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /title="Liquid Spectrum experience QA frame"/);
+  assert.match(html, /src="\/liquid-spectrum"/);
   assert.match(html, /width:1265px/);
   assert.match(html, /height:712px/);
 });

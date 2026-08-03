@@ -1,0 +1,8 @@
+{
+  "label": "phase-delivery",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 4.041,
+  "channelsOverThresholdPercent": 5.21,
+  "threshold": 12
+}

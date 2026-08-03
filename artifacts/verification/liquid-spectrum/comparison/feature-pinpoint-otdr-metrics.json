@@ -1,0 +1,8 @@
+{
+  "label": "feature-pinpoint-otdr",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 4.321,
+  "channelsOverThresholdPercent": 5.623,
+  "threshold": 12
+}

@@ -1,0 +1,8 @@
+{
+  "label": "feature-planning-tool-calibrator",
+  "width": 1280,
+  "height": 720,
+  "meanAbsoluteChannelDifference": 5.982,
+  "channelsOverThresholdPercent": 7.282,
+  "threshold": 12
+}
