@@ -1,0 +1,91 @@
+.pagesHub {
+  align-items: center;
+  background:
+    radial-gradient(circle at 84% 18%, rgba(241, 138, 0, 0.18), transparent 24%),
+    linear-gradient(135deg, #140729 0%, #25123d 52%, #140729 100%);
+  color: #ffffff;
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+  justify-content: center;
+  min-height: 650px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.pagesHubContent {
+  width: 1120px;
+}
+
+.pagesEyebrow {
+  color: #f18a00;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  margin: 0 0 18px;
+  text-transform: uppercase;
+}
+
+.pagesHub h1 {
+  font-size: 54px;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0;
+}
+
+.pagesIntro {
+  color: #c9c2d1;
+  font-size: 18px;
+  margin: 18px 0 42px;
+}
+
+.pagesGrid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.pagesCard {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  display: grid;
+  gap: 12px;
+  min-height: 150px;
+  padding: 24px 28px;
+  position: relative;
+  text-decoration: none;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.pagesCard:hover,
+.pagesCard:focus-visible {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: #f18a00;
+  outline: none;
+  transform: translateY(-3px);
+}
+
+.pagesCardNumber {
+  color: #f18a00;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.pagesCard strong {
+  font-size: 24px;
+}
+
+.pagesCard > span:not(.pagesCardNumber, .pagesArrow) {
+  color: #c9c2d1;
+  font-size: 15px;
+}
+
+.pagesArrow {
+  color: #f18a00;
+  font-size: 26px;
+  position: absolute;
+  right: 26px;
+  top: 22px;
+}

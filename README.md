@@ -6,8 +6,8 @@ Desktop-only React/TypeScript rebuilds of four Ciena Ceros experiences. Work pro
 
 - Timeline: approved July 15, 2026.
 - Navigator: approved July 15, 2026.
-- RLS C&L Band: QA passed; awaiting user approval.
-- Liquid Spectrum: blocked until RLS approval.
+- RLS C&L Band: approved July 16, 2026.
+- Liquid Spectrum: QA passed; awaiting user approval.
 
 See `BUILD_PLAN.md` for the living checklist and `artifacts/verification/` for QA evidence.
 
@@ -17,10 +17,25 @@ See `BUILD_PLAN.md` for the living checklist and `artifacts/verification/` for Q
 - `/timeline` — Timeline iframe entry point.
 - `/navigator` — Navigator iframe entry point.
 - `/rls` — RLS C&L Band iframe entry point.
+- `/liquid-spectrum` — Liquid Spectrum iframe entry point.
 - `/qa/navigator-iframe` — fixed 1265 × 712 desktop embed harness.
 - `/qa/rls-iframe` — fixed 1265 × 712 desktop embed harness.
+- `/qa/liquid-spectrum-iframe` — fixed 1265 × 712 desktop embed harness.
 
-Later routes are intentionally not created until the preceding page is approved.
+## GitHub Pages
+
+The repository includes a separate static build for GitHub Pages. It reuses the
+same experience components without requiring the vinext/Cloudflare server
+runtime.
+
+- Team index: <https://vhmarquez.github.io/diagram-rebuilds/>
+- Timeline: <https://vhmarquez.github.io/diagram-rebuilds/timeline/>
+- Navigator: <https://vhmarquez.github.io/diagram-rebuilds/navigator/>
+- RLS C&L Band: <https://vhmarquez.github.io/diagram-rebuilds/rls/>
+- Liquid Spectrum: <https://vhmarquez.github.io/diagram-rebuilds/liquid-spectrum/>
+
+Merges to `main` automatically rebuild and deploy the Pages site through
+`.github/workflows/pages.yml`.
 
 ## Commands
 
@@ -31,6 +46,8 @@ npm run typecheck
 npm run lint
 npm test
 npm run build
+npm run test:pages
+npm run build:pages
 ```
 
 Recreate the Timeline source archive, optimized assets, and runtime manifests:
@@ -49,6 +66,12 @@ Recreate the RLS source archive and optimized assets:
 
 ```bash
 npm run assets:rls
+```
+
+Recreate the Liquid Spectrum source archive, optimized assets, and vector scene data:
+
+```bash
+npm run assets:liquid-spectrum
 ```
 
 ## Asset model

@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import { withBasePath } from "@/src/shared/withBasePath";
 import vectorDataJson from "./vector-scenes.json";
 import styles from "./rls.module.css";
 
@@ -205,7 +206,8 @@ function VectorCustomShape({ component }: { component: VectorComponent }) {
 }
 
 function VectorImage({ component }: { component: VectorComponent }) {
-  const href = component.image ? vectorData.assets[component.image] : undefined;
+  const source = component.image ? vectorData.assets[component.image] : undefined;
+  const href = source ? withBasePath(source) : undefined;
   if (!href) return null;
   if (href.endsWith("/circle-icon.svg")) {
     return (

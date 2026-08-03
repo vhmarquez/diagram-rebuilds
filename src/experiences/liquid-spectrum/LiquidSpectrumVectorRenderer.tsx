@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import { withBasePath } from "@/src/shared/withBasePath";
 import vectorDataJson from "./vector-scenes.json";
 import styles from "./liquid-spectrum.module.css";
 
@@ -246,7 +247,8 @@ function VectorCustomShape({ component }: { component: VectorComponent }) {
 }
 
 function VectorImage({ component }: { component: VectorComponent }) {
-  const href = component.image ? vectorData.assets[component.image] : undefined;
+  const source = component.image ? vectorData.assets[component.image] : undefined;
+  const href = source ? withBasePath(source) : undefined;
   const width = component.width ?? 0;
   const height = component.height ?? 0;
   const color = paintColor(component.background) ?? "#140729";
