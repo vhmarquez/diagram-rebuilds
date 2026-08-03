@@ -3,10 +3,14 @@
 
 import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
+import { withBasePath } from "@/src/shared/withBasePath";
 import styles from "./navigator.module.css";
 
 const STAGE_WIDTH = 1280;
 const STAGE_HEIGHT = 720;
+
+const navigatorAsset = (filename: string) =>
+  withBasePath(`/assets/optimized/navigator/${filename}`);
 
 type NavigatorState = "suite" | "controller" | "apps" | "emulation";
 
@@ -79,7 +83,7 @@ function SuitePanel() {
         className={styles.suiteImage}
         decoding="async"
         draggable={false}
-        src="/assets/optimized/navigator/navigator-ncs.webp"
+        src={navigatorAsset("navigator-ncs.webp")}
       />
     </section>
   );
@@ -105,7 +109,7 @@ function ControllerPanel() {
         className={styles.controllerImage}
         decoding="async"
         draggable={false}
-        src="/assets/optimized/navigator/navigator-mc.webp"
+        src={navigatorAsset("navigator-mc.webp")}
       />
       <LearnMore className={styles.controllerCta} href={ctaLinks.controller} />
     </section>
@@ -115,7 +119,7 @@ function ControllerPanel() {
 const appRows = [
   {
     id: "liquid-spectrum",
-    icon: "/assets/optimized/navigator/liquid-spectrum-icon.png",
+    icon: navigatorAsset("liquid-spectrum-icon.png"),
     iconAlt: "Liquid Spectrum",
     label: "Liquid Spectrum",
     copy: (
@@ -129,7 +133,7 @@ const appRows = [
   },
   {
     id: "enhanced-ip",
-    icon: "/assets/optimized/navigator/enhanced-ip-control.png",
+    icon: navigatorAsset("enhanced-ip-control.png"),
     iconAlt: "Enhanced IP Control",
     label: "Enhanced IP Control",
     copy: (
@@ -142,7 +146,7 @@ const appRows = [
   },
   {
     id: "multi-layer-operations",
-    icon: "/assets/optimized/navigator/multi-layer-operations.png",
+    icon: navigatorAsset("multi-layer-operations.png"),
     iconAlt: "Multi-Layer Operations",
     label: "Multi-Layer Operations",
     copy: (
@@ -156,7 +160,7 @@ const appRows = [
   },
   {
     id: "plannerplus",
-    icon: "/assets/optimized/navigator/plannerplus-2.png",
+    icon: navigatorAsset("plannerplus-2.png"),
     iconAlt: "PlannerPlus",
     label: "PlannerPlus",
     copy: (
@@ -227,7 +231,7 @@ function EmulationPanel() {
         className={styles.emulationImage}
         decoding="async"
         draggable={false}
-        src="/assets/optimized/navigator/ciena-emulation-cloud.webp"
+        src={navigatorAsset("ciena-emulation-cloud.webp")}
       />
       <LearnMore className={styles.emulationCta} href={ctaLinks.emulation} />
     </section>
@@ -263,9 +267,9 @@ export function NavigatorExperience() {
   return (
     <main aria-label="Ciena Navigator product overview" className={styles.viewer}>
       <style>{`
-        @font-face{font-family:"Aktiv Grotesk";src:url("/assets/optimized/navigator/aktiv-grotesk-light.woff") format("woff");font-style:normal;font-weight:300;font-display:swap;}
-        @font-face{font-family:"Aktiv Grotesk";src:url("/assets/optimized/navigator/aktiv-grotesk-regular.woff") format("woff");font-style:normal;font-weight:400;font-display:swap;}
-        @font-face{font-family:"Aktiv Grotesk";src:url("/assets/optimized/navigator/aktiv-grotesk-bold.woff") format("woff");font-style:normal;font-weight:700;font-display:swap;}
+        @font-face{font-family:"Aktiv Grotesk";src:url("${navigatorAsset("aktiv-grotesk-light.woff")}") format("woff");font-style:normal;font-weight:300;font-display:swap;}
+        @font-face{font-family:"Aktiv Grotesk";src:url("${navigatorAsset("aktiv-grotesk-regular.woff")}") format("woff");font-style:normal;font-weight:400;font-display:swap;}
+        @font-face{font-family:"Aktiv Grotesk";src:url("${navigatorAsset("aktiv-grotesk-bold.woff")}") format("woff");font-style:normal;font-weight:700;font-display:swap;}
       `}</style>
       <div
         className={styles.stage}
@@ -278,7 +282,7 @@ export function NavigatorExperience() {
           className={styles.triangle}
           decoding="async"
           draggable={false}
-          src="/assets/optimized/navigator/navigator-network-control-suite-triangle.webp"
+          src={navigatorAsset("navigator-network-control-suite-triangle.webp")}
         />
         <DetailPanel key={state} state={state} />
         <nav aria-label="Choose a Navigator product" className={styles.stateControls}>

@@ -3,6 +3,7 @@
 
 import type { CSSProperties, ReactNode } from "react";
 import { Fragment, useEffect, useMemo, useState } from "react";
+import { withBasePath } from "@/src/shared/withBasePath";
 import renderDataJson from "./render-data.json";
 import runtimeAssetsJson from "./runtime-assets.json";
 import styles from "./timeline.module.css";
@@ -61,7 +62,7 @@ type RuntimeAssets = {
 const renderData = renderDataJson as RenderData;
 const runtimeAssets = runtimeAssetsJson as RuntimeAssets;
 const assetPaths = new Map(
-  runtimeAssets.assets.map((asset) => [asset.id, asset.path]),
+  runtimeAssets.assets.map((asset) => [asset.id, withBasePath(asset.path)]),
 );
 
 function weightForGuid(guid?: string) {
@@ -240,7 +241,7 @@ export function TimelineExperience() {
   const fontCss = runtimeAssets.fonts
     .map(
       (font) =>
-        `@font-face{font-family:"Aktiv Grotesk";src:url("${font.path}") format("woff");font-style:normal;font-weight:${font.weight};font-display:swap;}`,
+        `@font-face{font-family:"Aktiv Grotesk";src:url("${withBasePath(font.path)}") format("woff");font-style:normal;font-weight:${font.weight};font-display:swap;}`,
     )
     .join("");
 
