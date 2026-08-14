@@ -6,14 +6,14 @@ Status: **PASS — awaiting user approval**
 ## Scope
 
 - Ciena host: <https://www.ciena.com/products/navigator-ncs>
-- Ceros reference: <https://view.ceros.com/ciena/ciena-mcp-5-1-1/p/1>
+- source platform reference: archived original reference
 - Rebuild route: `/navigator`
 - Current review route: `/`
 - Required platform: fixed desktop iframe only
 
 ## Reference inventory
 
-- Ceros artboard: 1280 × 720px with `scale_to_fold` behavior.
+- source platform artboard: 1280 × 720px with `scale_to_fold` behavior.
 - Live Ciena iframe: 1265 × 712px at the inspected desktop viewport.
 - Published states: Navigator Network Control Suite, Navigator Multi-Layer Controller, Navigator Intelligent Apps, and Emulation Cloud.
 - Published controls: four state hotspots and five visible outbound CTAs across the four states.
@@ -26,15 +26,15 @@ The complete source manifest, source media, source URLs, dimensions, MIME types,
 ## Implementation
 
 - React 19 + TypeScript + Vite/vinext route at `/navigator`.
-- A single explicit state machine drives the data-focused detail panel; no Ceros runtime or hidden legacy layer tree ships to the browser.
+- A single explicit state machine drives the data-focused detail panel; no source platform runtime or hidden legacy layer tree ships to the browser.
 - Fixed 1280 × 720 artboard scales uniformly to the iframe container.
 - The four original hotspot rectangles, five CTA hit rectangles, all current destination URLs, and `_blank` behavior are preserved.
 - Native buttons, headings, regions, links, `aria-pressed`, accessible names, alternative text, and visible keyboard focus improve semantics without changing the settled design.
-- Ceros' 0.8s `fadeLeft`/`fadeIn` transitions and Intelligent Apps stagger delays are reproduced with CSS and disabled under reduced-motion preferences.
+- source platform's 0.8s `fadeLeft`/`fadeIn` transitions and Intelligent Apps stagger delays are reproduced with CSS and disabled under reduced-motion preferences.
 
 ## Visual verification
 
-Reference and rebuild screenshots were compared at 1280 × 720 for all four settled states. The rebuild uses Ceros' measured text-box inner width—98% of the authored component width—so wrapping and glyph positions match rather than merely approximating the outer layer rectangles.
+Reference and rebuild screenshots were compared at 1280 × 720 for all four settled states. The rebuild uses source platform's measured text-box inner width—98% of the authored component width—so wrapping and glyph positions match rather than merely approximating the outer layer rectangles.
 
 | State | Mean absolute channel difference | Channels differing by more than 12/255 |
 | --- | ---: | ---: |
@@ -69,7 +69,7 @@ Representative transition comparisons at 0ms, 500ms, and 1200ms also pass. The l
 
 - Fresh development and packaged-runtime tabs: no application warnings or errors.
 - Broken image count: 0 in every state and inside the packaged iframe harness.
-- Production `dist/` references to `ceros.com`, `view.ceros`, or `media.ceros`: 0.
+- Production `dist/` references to `source-host domain`, `source-view host`, or `source-media host`: 0.
 - Extracted Navigator media: 5,259,648 bytes.
 - Optimized Navigator runtime media: 363,524 bytes.
 - Media reduction: **93.09%**.
@@ -86,20 +86,20 @@ The packaged Cloudflare Worker plus static-asset binding was exercised through t
 | `npm run lint` | PASS |
 | `npm test` | PASS — production build plus 4/4 rendered-route tests |
 | Packaged-runtime browser QA | PASS |
-| Ceros runtime string scan | PASS — 0 hits in `dist/` |
+| source platform runtime string scan | PASS — 0 hits in `dist/` |
 
 ## Defects found and fixed during QA
 
 1. The generic optimizer would have rasterized source SVGs. It now preserves SVG and unknown media losslessly while continuing to resize raster screenshots.
-2. A first semantic-text pass used authored outer widths directly, which changed several wrap points. The implementation now uses the measured Ceros inner text widths and exact line-box offsets.
+2. A first semantic-text pass used authored outer widths directly, which changed several wrap points. The implementation now uses the measured source platform inner text widths and exact line-box offsets.
 3. The first Intelligent Apps animation pass compressed the row sequence. The source delays were recovered and restored at 0.6s, 1.8s, 2.4s, and 3.0s.
 4. The starter's Node-oriented `vinext start` command did not serve the Cloudflare static-asset binding. `npm start` now runs the packaged Worker through its generated Wrangler configuration, and both route and hashed assets return 200.
-5. CTA visual rectangles initially doubled as their clickable rectangles. The invisible live-Ceros hit areas are now preserved separately from the pill visuals.
+5. CTA visual rectangles initially doubled as their clickable rectangles. The invisible live-source platform hit areas are now preserved separately from the pill visuals.
 
 ## Intentional implementation differences
 
-- The rebuild renders the current composite triangle asset once rather than carrying Ceros' older hidden construction layers and masks.
-- Semantic text and controls replace Ceros' absolute-positioned paragraph/hotspot wrappers.
+- The rebuild renders the current composite triangle asset once rather than carrying source platform's older hidden construction layers and masks.
+- Semantic text and controls replace source platform's absolute-positioned paragraph/hotspot wrappers.
 - Runtime screenshots use local two-times-rendered-width WebP variants; small icons and SVGs remain lossless.
 - The reference shows no selected-state outline, so the rebuild does not add one. Selection remains available to assistive technology through `aria-pressed`.
 - Responsive variants are intentionally out of scope per the project requirement.

@@ -14,7 +14,7 @@ Conclusion: **PASS**
 | Packaged Cloudflare runtime | PASS — page and hashed JavaScript assets return 200 |
 | Production runtime browser pass | PASS — default and controller state, local assets, iframe harness |
 | Production console | PASS — no warning or error messages |
-| Production Ceros string scan | PASS — 0 hits in `dist/` |
+| Production source platform string scan | PASS — 0 hits in `dist/` |
 
 ## Browser interaction checks
 

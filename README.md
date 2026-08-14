@@ -1,86 +1,56 @@
-# Ciena Interactive Experience Rebuilds
+# Ciena interactive experience rebuilds
 
-Desktop-only React/TypeScript rebuilds of four Ciena Ceros experiences. Work proceeds one page at a time with an explicit user-approval gate after internal QA.
+Four fixed-desktop interactive experiences rebuilt as a static website using only HTML, CSS, vanilla JavaScript, SVG scene data, fonts, and image assets.
 
-## Current status
+## Pages
 
-- Timeline: approved July 15, 2026.
-- Navigator: approved July 15, 2026.
-- RLS C&L Band: approved July 16, 2026.
-- Liquid Spectrum: QA passed; awaiting user approval.
+- `/timeline.html` — Ciena company timeline
+- `/navigator.html` — Navigator Network Control Suite
+- `/rls.html` — RLS C & L Band
+- `/liquid-spectrum.html` — Liquid Spectrum
 
-See `BUILD_PLAN.md` for the living checklist and `artifacts/verification/` for QA evidence.
+The experiences are designed for a 1280 × 720 desktop viewport, except the timeline, which preserves its 1280 × 4500 source artboard and scales it into the available iframe.
 
-## Routes
+## Local preview
 
-- `/` — current review page (RLS C&L Band).
-- `/timeline` — Timeline iframe entry point.
-- `/navigator` — Navigator iframe entry point.
-- `/rls` — RLS C&L Band iframe entry point.
-- `/liquid-spectrum` — Liquid Spectrum iframe entry point.
-- `/qa/navigator-iframe` — fixed 1265 × 712 desktop embed harness.
-- `/qa/rls-iframe` — fixed 1265 × 712 desktop embed harness.
-- `/qa/liquid-spectrum-iframe` — fixed 1265 × 712 desktop embed harness.
+No packages, framework, or build step are required. From the repository root, run any static file server against the `site` folder. For example:
+
+```powershell
+python -m http.server 3000 --directory site
+```
+
+Then open [http://localhost:3000](http://localhost:3000).
+
+## Project structure
+
+```text
+site/
+├── index.html
+├── timeline.html
+├── navigator.html
+├── rls.html
+├── liquid-spectrum.html
+├── css/
+├── js/
+├── data/
+└── assets/
+```
+
+- Each experience has a direct HTML entry point.
+- Page layout and animations live in ordinary CSS.
+- Interaction state and SVG scene rendering use browser-native JavaScript modules.
+- Recovered and optimized Ciena assets are served directly from `site/assets`.
+
+## QA
+
+Run the dependency-free static checks with:
+
+```powershell
+node --test tests/static-site.test.mjs
+```
+
+The checks verify that all four pages exist, local file references resolve, scene assets are present, and no framework entry points remain in the published site.
 
 ## GitHub Pages
 
-The repository includes a separate static build for GitHub Pages. It reuses the
-same experience components without requiring the vinext/Cloudflare server
-runtime.
-
-- Team index: <https://vhmarquez.github.io/diagram-rebuilds/>
-- Timeline: <https://vhmarquez.github.io/diagram-rebuilds/timeline/>
-- Navigator: <https://vhmarquez.github.io/diagram-rebuilds/navigator/>
-- RLS C&L Band: <https://vhmarquez.github.io/diagram-rebuilds/rls/>
-- Liquid Spectrum: <https://vhmarquez.github.io/diagram-rebuilds/liquid-spectrum/>
-
-Merges to `main` automatically rebuild and deploy the Pages site through
-`.github/workflows/pages.yml`.
-
-## Commands
-
-```bash
-npm ci
-npm run dev
-npm run typecheck
-npm run lint
-npm test
-npm run build
-npm run test:pages
-npm run build:pages
-```
-
-Recreate the Timeline source archive, optimized assets, and runtime manifests:
-
-```bash
-npm run assets:timeline
-```
-
-Recreate the Navigator source archive and optimized assets:
-
-```bash
-npm run assets:navigator
-```
-
-Recreate the RLS source archive and optimized assets:
-
-```bash
-npm run assets:rls
-```
-
-Recreate the Liquid Spectrum source archive, optimized assets, and vector scene data:
-
-```bash
-npm run assets:liquid-spectrum
-```
-
-## Asset model
-
-- `assets/source/<page>/` preserves downloaded originals for audit and future reprocessing.
-- `public/assets/optimized/<page>/` contains only deployment-ready runtime assets.
-- `src/experiences/<page>/ceros-manifest.json` preserves the source Ceros document.
-- `src/experiences/<page>/render-data.json` is the compact client runtime representation.
-- `src/experiences/<page>/asset-manifest.json` records URLs, dimensions, byte sizes, and SHA-256 checksums.
-- `src/experiences/<page>/runtime-assets.json` contains only local runtime paths.
-
-Production output must not contain Ceros URLs or depend on Ceros at runtime.
+Pushing to `main` runs the Pages workflow. GitHub publishes the `site` directory directly; there is no compilation or generated deployment folder.

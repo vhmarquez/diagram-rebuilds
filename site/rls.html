@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ciena RLS C&amp;L Band</title>
+    <meta name="description" content="Interactive Ciena 6500 Reconfigurable Line System growth experience.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/rls.css">
+    <script type="module" src="js/rls.js?v=3"></script>
+  </head>
+  <body>
+    <main aria-label="Ciena 6500 Reconfigurable Line System" class="viewer">
+      <div class="stage" data-active-step="1" data-experience="ciena-rls" data-motion-phase="entering" data-product-view="closed" data-renderer="native-svg" data-startup-step-visible="false" data-step-interactions-ready="false" id="rls-stage">
+        <nav aria-label="Choose an RLS growth step" class="stepControls">
+          <div class="stepControl" style="left:39px;top:67px;width:169px;height:38px;--menu-delay:0ms">
+            <span aria-hidden="true" class="stepEyebrow">STEP 1</span>
+            <button aria-disabled="true" aria-label="Show Step 1: Initial Installation" aria-pressed="false" class="stepButton" data-step-target="1" type="button">Initial Installation</button>
+          </div>
+          <div class="stepControl" style="left:232px;top:67px;width:169px;height:38px;--menu-delay:400ms">
+            <span aria-hidden="true" class="stepEyebrow">STEP 2</span>
+            <button aria-disabled="true" aria-label="Show Step 2: Grow C-band traffic" aria-pressed="false" class="stepButton" data-step-target="2" type="button">Grow C-band traffic</button>
+          </div>
+          <div class="stepControl" style="left:39px;top:132px;width:169px;height:38px;--menu-delay:800ms">
+            <span aria-hidden="true" class="stepEyebrow">STEP 3</span>
+            <button aria-disabled="true" aria-label="Show Step 3: Expand to L-band" aria-pressed="false" class="stepButton" data-step-target="3" type="button">Expand to L-band</button>
+          </div>
+          <div class="stepControl" style="left:232px;top:132px;width:169px;height:38px;--menu-delay:1200ms">
+            <span aria-hidden="true" class="stepEyebrow">STEP 4</span>
+            <button aria-disabled="true" aria-label="Show Step 4: Grow L-band traffic" aria-pressed="false" class="stepButton" data-step-target="4" type="button">Grow L-band traffic</button>
+          </div>
+        </nav>
+
+        <div aria-hidden="true" class="copyRule startupHidden" id="rls-copy-rule"></div>
+        <section aria-hidden="true" aria-live="polite" class="stepCopy startupHidden" data-step="1" id="rls-step-copy">
+          <h1 class="srOnly">Step 1: Initial Installation</h1>
+          <ul></ul>
+        </section>
+        <div id="rls-scene-root"></div>
+
+        <button aria-disabled="true" aria-haspopup="dialog" aria-label="Open ROADM Site product view for Step 1" class="productHotspot roadmHotspot" data-product-target="roadm" tabindex="-1" type="button">Product view</button>
+        <button aria-disabled="true" aria-haspopup="dialog" aria-label="Open Bi-directional Amplifier Site product view" class="productHotspot amplifierHotspot" data-product-target="amplifier" tabindex="-1" type="button">Product view</button>
+      </div>
+    </main>
+  </body>
+</html>

@@ -11,7 +11,7 @@ Date: July 15, 2026
 | `npm test` | PASS |
 | Rendered route suite | PASS — 6 of 6 routes |
 | Production build | PASS |
-| Production scan for Ceros runtime references | PASS — zero matches |
+| Production scan for source platform runtime references | PASS — zero matches |
 
 ## Native SVG checks
 
@@ -19,7 +19,7 @@ Date: July 15, 2026
 | --- | --- |
 | Selected manifest scene data | PASS — 697 components, 30 local assets, no missing image mappings |
 | Runtime renderer | PASS — `data-renderer="native-svg"` |
-| Step 4 runtime DOM | PASS — 280 Ceros component groups, 38 vector text blocks, two SVG surfaces |
+| Step 4 runtime DOM | PASS — 280 source platform component groups, 38 vector text blocks, two SVG surfaces |
 | Canvas/screenshot layers | PASS — zero canvas and no runtime screenshot crops |
 | Vector color metadata | PASS — orange callout assets render with the source tint |
 | Hidden source layers | PASS — inactive hover/navigation layers do not leak into settled scenes |

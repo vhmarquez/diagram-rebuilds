@@ -10,5 +10,5 @@ Run date: July 15, 2026
 | Fresh-tab browser console | PASS, 0 errors or warnings |
 | Image readiness | PASS, 19/19 complete with non-zero natural width |
 | Font readiness | PASS, Aktiv Grotesk loaded |
-| Production Ceros URL scan | PASS, 0 hits in `dist/` |
+| Production source platform URL scan | PASS, 0 hits in `dist/` |
 | Live-vs-rebuild leaf geometry | PASS, maximum sampled visible delta 0.01px |

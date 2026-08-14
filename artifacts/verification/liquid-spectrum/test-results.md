@@ -12,7 +12,7 @@ Date: July 16, 2026
 | Rendered route suite | PASS — 8 of 8 routes |
 | Production build | PASS |
 | `git diff --check` | PASS |
-| Production scan for Ceros runtime URLs | PASS — zero matches |
+| Production scan for source platform runtime URLs | PASS — zero matches |
 
 ## State and interaction checks
 
@@ -52,7 +52,7 @@ Date: July 16, 2026
 | Browser console warnings/errors | PASS — zero |
 | Page asset inventory | PASS — 82 observed assets plus one inline SVG |
 | Remote runtime assets | PASS — zero |
-| Ceros/Ciena runtime hosts | PASS — zero |
+| source platform/Ciena runtime hosts | PASS — zero |
 | Host-style iframe | PASS — exact 1265 × 712 geometry in 1280 × 720 viewport |
 | Iframe clipping/overflow | PASS — none |
 

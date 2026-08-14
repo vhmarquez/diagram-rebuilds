@@ -10,7 +10,7 @@
 | Visible hover states | None | None added | PASS |
 | Visible click states | None | None added | PASS |
 | Keyboard controls | None | No artificial focus targets added | PASS |
-| Hidden Ceros hotspots | 11 hidden legacy hotspots | Not rendered | PASS |
-| Reduced motion | Not explicitly exposed by Ceros | Settled layout, no entrance motion | PASS |
+| Hidden source platform hotspots | 11 hidden legacy hotspots | Not rendered | PASS |
+| Reduced motion | Not explicitly exposed by source platform | Settled layout, no entrance motion | PASS |
 
 There is one published user-visible state and no interactive state transition to automate for this page.

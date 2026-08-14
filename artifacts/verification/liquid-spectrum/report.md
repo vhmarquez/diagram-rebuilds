@@ -5,7 +5,7 @@ Status: **QA passed — awaiting user approval**
 
 ## Scope and references
 
-- Live experience: <https://view.ceros.com/ciena/liquid-spectrum-10/p/1>
+- Live experience: archived original reference
 - Ciena host page: <https://www.ciena.com/products/liquid-spectrum>
 - Rebuild route: `/liquid-spectrum`
 - Native artboard: 1280 × 720
@@ -14,15 +14,15 @@ Status: **QA passed — awaiting user approval**
 
 ## Recovered implementation
 
-The live experience was reconstructed from its Ceros document-version manifest and locally downloaded media instead of using Ceros at runtime.
+The live experience was reconstructed from its source platform document-version manifest and locally downloaded media instead of using source platform at runtime.
 
 - All 37 referenced media assets and three required fonts were recovered and inventoried.
 - Source files are preserved under `assets/source/liquid-spectrum/`; optimized runtime files are under `public/assets/optimized/liquid-spectrum/`.
 - Runtime media is 80.03% smaller than the recovered source set.
-- The extracted scene dataset retains 434 selected Ceros components, their artboard coordinates, stacking order, styling, and animation metadata.
-- The page renders as a native SVG/component hierarchy. It does not use canvas, panel screenshots, or remote Ceros embeds.
-- Legacy Ceros plus, arrow, chevron, and caution symbols that were referenced as shared asset IDs but omitted from the page media list were reconstructed as inline vector geometry using the source component metadata.
-- Source text spacing is converted from Ceros thousandths-of-an-em values, preserving the live navigation and panel typography.
+- The extracted scene dataset retains 434 selected source platform components, their artboard coordinates, stacking order, styling, and animation metadata.
+- The page renders as a native SVG/component hierarchy. It does not use canvas, panel screenshots, or remote source platform embeds.
+- Legacy source platform plus, arrow, chevron, and caution symbols that were referenced as shared asset IDs but omitted from the page media list were reconstructed as inline vector geometry using the source component metadata.
+- Source text spacing is converted from source platform thousandths-of-an-em values, preserving the live navigation and panel typography.
 
 ## Animation parity
 
@@ -65,8 +65,8 @@ Reference evidence is in `reference/`; rebuilt evidence is in `rebuild/`; the pr
 - Browser console warnings/errors: zero.
 - Broken HTML images: zero.
 - Canvas elements: zero.
-- Page asset inventory: 82 observed assets plus one inline SVG; zero remote URLs and zero Ceros/Ciena runtime hosts.
-- Production output scan: zero `view.ceros.com` or `media.ceros.com` runtime references.
+- Page asset inventory: 82 observed assets plus one inline SVG; zero remote URLs and zero source platform/Ciena runtime hosts.
+- Production output scan: zero `view.source-host domain` or `media.source-host domain` runtime references.
 
 ## Automated checks
 
@@ -79,8 +79,8 @@ Reference evidence is in `reference/`; rebuilt evidence is in `rebuild/`; the pr
 
 ## Defects found and fixed during QA
 
-- Reconstructed missing shared Ceros legacy icons as native vector elements.
-- Corrected Ceros letter-spacing conversion that initially spread navigation labels too widely.
+- Reconstructed missing shared source platform legacy icons as native vector elements.
+- Corrected source platform letter-spacing conversion that initially spread navigation labels too widely.
 - Matched the source Previous/Next uppercase styling and chevron geometry.
 - Added the source lifecycle gradient dimmers to direct feature selections.
 - Prevented programmatic focus from showing a non-source border while preserving keyboard focus-visible behavior.

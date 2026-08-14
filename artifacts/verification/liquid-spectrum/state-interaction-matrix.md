@@ -1,14 +1,14 @@
 # Liquid Spectrum state and interaction matrix
 
-Reference: <https://view.ceros.com/ciena/liquid-spectrum-10/p/1>
+Reference: archived original reference
 
 Artboard: 1280 × 720. Live Ciena embed: 1265 × 711.5625 (16:9).
 
 ## Startup sequence
 
-| Time from Ceros load | Observed state |
+| Time from source platform load | Observed state |
 | --- | --- |
-| 0 s | Ceros loading spinner on white |
+| 0 s | source platform loading spinner on white |
 | ~0.8 s | Channel Margin Gauge shell and copy begin fading in; lifecycle ring is faint |
 | ~2.2 s | Ring construction and phase-label sequence is underway |
 | ~4.0 s | Selected Operations label and feature panel are visible while ring animation continues |

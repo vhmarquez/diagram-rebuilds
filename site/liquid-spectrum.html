@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ciena Liquid Spectrum</title>
+    <meta name="description" content="Interactive Ciena Liquid Spectrum lifecycle applications.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/liquid-spectrum.css">
+    <script type="module" src="js/liquid-spectrum.js?v=4"></script>
+  </head>
+  <body>
+    <main aria-label="Ciena Liquid Spectrum" class="viewer">
+      <div class="stage" data-active-feature="channelMarginGauge" data-active-phase="none" data-experience="ciena-liquid-spectrum" data-interactions-ready="false" data-renderer="native-svg" data-scene-closing="false" data-selected-lifecycle="operations" id="liquid-stage">
+        <div id="liquid-base-root"></div>
+        <div id="liquid-dimmer-root"></div>
+        <div id="liquid-scene-root"></div>
+
+        <nav aria-label="Explore the Liquid Spectrum lifecycle" class="hotspotLayer">
+          <button aria-label="Show Planning lifecycle information" aria-pressed="false" class="hotspot" data-phase-target="planning" disabled style="left:313px;top:203px;width:114px;height:50px" type="button"></button>
+          <button aria-label="Show Delivery lifecycle information" aria-pressed="false" class="hotspot" data-phase-target="delivery" disabled style="left:501px;top:360px;width:111px;height:55px" type="button"></button>
+          <button aria-label="Show Operations lifecycle information" aria-pressed="true" class="hotspot" data-phase-target="operations" disabled style="left:318px;top:548px;width:115px;height:56px" type="button"></button>
+          <button aria-label="Show Optimization lifecycle information" aria-pressed="false" class="hotspot" data-phase-target="optimization" disabled style="left:108px;top:360px;width:138px;height:57px" type="button"></button>
+          <button aria-label="Show Liquid Spectrum lifecycle information" aria-pressed="false" class="hotspot" data-phase-target="liquidSpectrum" disabled style="left:247px;top:267px;width:254px;height:253px" type="button"></button>
+        </nav>
+
+        <nav aria-label="Explore Liquid Spectrum applications" class="hotspotLayer">
+          <button aria-label="Show Planning Tool Calibrator" aria-pressed="false" class="hotspot" data-feature-target="planningToolCalibrator" disabled style="left:783px;top:90px;width:393px;height:55px" type="button"></button>
+          <button aria-label="Show Bandwidth Optimizer" aria-pressed="false" class="hotspot" data-feature-target="bandwidthOptimizer" disabled style="left:783px;top:149px;width:393px;height:49px" type="button"></button>
+          <button aria-label="Show PinPoint OTDR" aria-pressed="false" class="hotspot" data-feature-target="pinPointOtdr" disabled style="left:783px;top:261px;width:393px;height:50px" type="button"></button>
+          <button aria-label="Show Channel Margin Gauge" aria-pressed="true" class="hotspot" data-feature-target="channelMarginGauge" disabled style="left:783px;top:329px;width:393px;height:50px" type="button"></button>
+          <button aria-label="Show Photonic Performance Gauge" aria-pressed="false" class="hotspot" data-feature-target="photonicPerformanceGauge" disabled style="left:783px;top:394px;width:393px;height:50px" type="button"></button>
+          <button aria-label="Show Liquid Restoration" aria-pressed="false" class="hotspot" data-feature-target="liquidRestoration" disabled style="left:783px;top:501px;width:393px;height:49px" type="button"></button>
+          <button aria-label="Show Spectrum Defragmentation" aria-pressed="false" class="hotspot" data-feature-target="spectrumDefragmentation" disabled style="left:783px;top:558px;width:393px;height:49px" type="button"></button>
+          <button aria-label="Show SNR Optimizer" aria-pressed="false" class="hotspot" data-feature-target="snrOptimizer" disabled style="left:783px;top:614px;width:393px;height:49px" type="button"></button>
+        </nav>
+      </div>
+    </main>
+  </body>
+</html>
