@@ -36,9 +36,13 @@ const steps = {
 };
 
 const stepDuration = { 1: 2500, 2: 2600, 3: 3200, 4: 3800 };
+const aseLabels = new Set(["Channelized ASE", "Bulk ASE"]);
 const stage = document.querySelector("#rls-stage");
 const platform = navigator.userAgentData?.platform || navigator.platform || navigator.userAgent;
-stage.dataset.platform = /windows|win32|win64/i.test(platform) ? "windows" : "other";
+let platformName = "other";
+if (/mac|iphone|ipad|ipod/i.test(platform)) platformName = "macos";
+if (/windows|win32|win64/i.test(platform)) platformName = "windows";
+stage.dataset.platform = platformName;
 const copyRule = document.querySelector("#rls-copy-rule");
 const copy = document.querySelector("#rls-step-copy");
 const sceneRoot = document.querySelector("#rls-scene-root");
@@ -85,16 +89,26 @@ function updateControls() {
   roadm.setAttribute("aria-label", `Open ROADM Site product view for Step ${step}`);
 }
 
+function markPlatformLabels(scene) {
+  scene.querySelectorAll("foreignObject").forEach((foreignObject) => {
+    const label = foreignObject.textContent.trim().replace(/\s+/g, " ");
+    const text = foreignObject.firstElementChild;
+    if (aseLabels.has(label)) text?.classList.add("aseLabel");
+    if (label === "C-band λ") text?.classList.add("cBandLabel");
+  });
+  return scene;
+}
+
 function renderStepScene() {
   sceneRoot.replaceChildren();
   if (!initialStepVisible || !renderer) return;
   const scene = document.createElement("div");
   scene.className = "scene";
   if (phase === "exiting") scene.classList.add("sceneExiting");
-  scene.append(renderer.scene(vectorData.scenes.steps[String(step)], {
+  scene.append(markPlatformLabels(renderer.scene(vectorData.scenes.steps[String(step)], {
     className: "vectorStep",
     sceneName: `step-${step}`,
-  }));
+  })));
   sceneRoot.append(scene);
 }
 

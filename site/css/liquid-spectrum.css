@@ -99,6 +99,14 @@
   transform: translateY(1px);
 }
 
+.stage[data-platform="macos"] [data-vector-component="5f918756aea84"] > g > g {
+  transform: translateY(2px);
+}
+
+.stage[data-platform="windows"] [data-vector-component="5f918756aea84"] > g > g {
+  transform: translateY(-1px);
+}
+
 .vectorBase {
   z-index: 1;
 }

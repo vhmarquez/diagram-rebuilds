@@ -1025,6 +1025,14 @@
   padding-top: 4px;
 }
 
+.stage[data-platform="macos"] .aseLabel {
+  transform: translateY(-3px);
+}
+
+.stage[data-platform="macos"] .cBandLabel {
+  transform: translateX(-1px);
+}
+
 .roadmHotspot {
   top: 592px;
   left: 78px;
