@@ -1030,7 +1030,7 @@
 }
 
 .stage[data-platform="macos"] .cBandLabel {
-  transform: translateX(-1px);
+  transform: translateX(-2px);
 }
 
 .roadmHotspot {
