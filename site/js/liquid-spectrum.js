@@ -21,6 +21,8 @@ const phaseLabels = {
 };
 
 const stage = document.querySelector("#liquid-stage");
+const platform = navigator.userAgentData?.platform || navigator.platform || navigator.userAgent;
+stage.dataset.platform = /mac|iphone|ipad|ipod/i.test(platform) ? "macos" : "other";
 const baseRoot = document.querySelector("#liquid-base-root");
 const dimmerRoot = document.querySelector("#liquid-dimmer-root");
 const sceneRoot = document.querySelector("#liquid-scene-root");

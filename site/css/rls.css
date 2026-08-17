@@ -106,6 +106,10 @@
   color: #ffffff;
 }
 
+.stage[data-platform="windows"] .stepButton {
+  padding-top: 4px;
+}
+
 .stepButton:focus-visible,
 .productHotspot:focus-visible,
 .closeButton:focus-visible {
@@ -1015,6 +1019,10 @@
 .productHotspot:hover {
   background: #ffffff;
   color: #f18a00;
+}
+
+.stage[data-platform="windows"] .productHotspot {
+  padding-top: 4px;
 }
 
 .roadmHotspot {

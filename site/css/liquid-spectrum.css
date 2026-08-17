@@ -57,6 +57,27 @@
   user-select: none;
 }
 
+.stage[data-platform="macos"] :is(
+  [data-vector-component="5fb450d12bc33"],
+  [data-vector-component="5fb450d12bc35"],
+  [data-vector-component="5fb44fac2bc2a"],
+  [data-vector-component="5fb44fac2bc2c"],
+  [data-vector-component="5fb44dd62bc1a"],
+  [data-vector-component="5fb44dd62bc1c"],
+  [data-vector-component="5fb44c922bc0f"],
+  [data-vector-component="5fb44c922bc11"],
+  [data-vector-component="5fb44a532bbff"],
+  [data-vector-component="5fb44a532bc01"],
+  [data-vector-component="5f91ac3a95c46"],
+  [data-vector-component="5f91ac3a95c48"],
+  [data-vector-component="65bd4048a866b"],
+  [data-vector-component="65bd4048a866d"],
+  [data-vector-component="65bd4039a8644"],
+  [data-vector-component="65bd4039a8646"]
+) foreignObject > div {
+  transform: translateY(-4px);
+}
+
 .vectorBase {
   z-index: 1;
 }

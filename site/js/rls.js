@@ -37,6 +37,8 @@ const steps = {
 
 const stepDuration = { 1: 2500, 2: 2600, 3: 3200, 4: 3800 };
 const stage = document.querySelector("#rls-stage");
+const platform = navigator.userAgentData?.platform || navigator.platform || navigator.userAgent;
+stage.dataset.platform = /windows|win32|win64/i.test(platform) ? "windows" : "other";
 const copyRule = document.querySelector("#rls-copy-rule");
 const copy = document.querySelector("#rls-step-copy");
 const sceneRoot = document.querySelector("#rls-scene-root");
