@@ -1,4 +1,4 @@
-import { fitStage } from "./common.js";
+import { fitStage, waitForFonts } from "./common.js?v=2";
 
 const stage = document.querySelector("#navigator-stage");
 const panels = [...stage.querySelectorAll("[data-panel]")];
@@ -18,4 +18,13 @@ controls.forEach((control) => {
   control.addEventListener("click", () => selectState(control.dataset.stateTarget));
 });
 
-fitStage(stage, 1280, 720, "--navigator-scale");
+async function initialize() {
+  fitStage(stage, 1280, 720, "--navigator-scale");
+  await waitForFonts();
+  stage.dataset.fontsReady = "true";
+}
+
+initialize().catch((error) => {
+  console.error(error);
+  stage.dataset.fontsReady = "true";
+});

@@ -1,4 +1,4 @@
-import { fitStage, loadJson, setStyles, siteUrl } from "./common.js";
+import { fitStage, loadJson, setStyles, siteUrl, waitForFonts } from "./common.js?v=2";
 
 const STAGE_WIDTH = 1280;
 const STAGE_HEIGHT = 4500;
@@ -146,15 +146,18 @@ async function initialize() {
   const fontStyle = document.createElement("style");
   fontStyle.textContent = fontCss;
   document.head.append(fontStyle);
+  await waitForFonts();
 
   [...data.hierarchy].reverse().forEach((item) => {
     const rendered = renderNode(item, data, assetPaths);
     if (rendered) stage.append(rendered);
   });
   fitStage(stage, STAGE_WIDTH, STAGE_HEIGHT, "--timeline-scale");
+  stage.dataset.fontsReady = "true";
 }
 
 initialize().catch((error) => {
   console.error(error);
+  stage.dataset.fontsReady = "true";
   stage.textContent = "The timeline could not be loaded.";
 });

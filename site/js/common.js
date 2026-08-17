@@ -12,6 +12,17 @@ export async function loadJson(path) {
   return response.json();
 }
 
+export async function waitForFonts() {
+  if (!document.fonts) return;
+
+  await Promise.all([
+    document.fonts.load('300 16px "Aktiv Grotesk"'),
+    document.fonts.load('400 16px "Aktiv Grotesk"'),
+    document.fonts.load('700 16px "Aktiv Grotesk"'),
+  ]);
+  await document.fonts.ready;
+}
+
 export function fitStage(stage, width, height, cssVariable) {
   const resize = () => {
     const scale = Math.min(window.innerWidth / width, window.innerHeight / height);

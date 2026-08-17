@@ -1,5 +1,5 @@
-import { fitStage, loadJson } from "./common.js";
-import { VectorRenderer } from "./vector-renderer.js";
+import { fitStage, loadJson, waitForFonts } from "./common.js?v=2";
+import { VectorRenderer } from "./vector-renderer.js?v=2";
 
 const steps = {
   1: {
@@ -202,7 +202,10 @@ window.addEventListener("keydown", (event) => {
 });
 
 async function initialize() {
-  vectorData = await loadJson("data/rls-scenes.json?v=3");
+  [vectorData] = await Promise.all([
+    loadJson("data/rls-scenes.json?v=3"),
+    waitForFonts(),
+  ]);
   renderer = new VectorRenderer(vectorData, "rls");
   const base = renderer.scene(vectorData.scenes.base, {
     className: "vectorBase",
@@ -211,6 +214,7 @@ async function initialize() {
   copy.insertAdjacentElement("afterend", base);
   renderCopy();
   fitStage(stage, 1280, 720, "--rls-scale");
+  stage.dataset.fontsReady = "true";
   window.setTimeout(revealInitialStep, 5000);
   window.setTimeout(() => {
     interactionsReady = true;
@@ -221,5 +225,6 @@ async function initialize() {
 
 initialize().catch((error) => {
   console.error(error);
+  stage.dataset.fontsReady = "true";
   stage.textContent = "The RLS experience could not be loaded.";
 });

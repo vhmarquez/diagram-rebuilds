@@ -17,8 +17,14 @@ body {
   background: #ffffff;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   min-width: 960px;
+  font-synthesis: none;
 }
 
 [hidden] {
@@ -28,4 +34,14 @@ body {
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.stage[data-fonts-ready="false"] {
+  visibility: hidden;
 }

@@ -1,4 +1,4 @@
-import { siteUrl } from "./common.js";
+import { siteUrl } from "./common.js?v=2";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -270,6 +270,7 @@ export class VectorRenderer {
       overflow: component.showOverflow ? "visible" : "hidden",
       color: defaultSpan.fontColor || "#373737",
       fontFamily: '"Aktiv Grotesk", Arial, Helvetica, sans-serif',
+      fontSynthesis: "none",
       fontSize: `${defaultSpan.fontSize || 12}px`,
       fontWeight: String(this.fontWeight(defaultSpan.variantGuid)),
       letterSpacing: this.letterSpacing(defaultSpan.letterSpacing, defaultSpan.fontSize || 12),
@@ -278,7 +279,9 @@ export class VectorRenderer {
       textDecoration: defaultSpan.underline ? "underline" : "none",
       textTransform: component.textTransform || "none",
       whiteSpace: "pre-wrap",
+      textSizeAdjust: "100%",
     });
+    div.style.setProperty("-webkit-text-size-adjust", "100%");
 
     const spans = [...(component.textSpans || [])]
       .filter((span) => span.length > 0 && span.index < text.length)

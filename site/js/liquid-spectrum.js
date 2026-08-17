@@ -1,5 +1,5 @@
-import { fitStage, loadJson } from "./common.js";
-import { VectorRenderer } from "./vector-renderer.js";
+import { fitStage, loadJson, waitForFonts } from "./common.js?v=2";
+import { VectorRenderer } from "./vector-renderer.js?v=2";
 
 const features = {
   planningToolCalibrator: { label: "Planning Tool Calibrator", phase: "planning", previous: "liquidRestoration", next: "bandwidthOptimizer" },
@@ -209,13 +209,17 @@ window.addEventListener("keydown", (event) => {
 });
 
 async function initialize() {
-  vectorData = await loadJson("data/liquid-spectrum-scenes.json?v=4");
+  [vectorData] = await Promise.all([
+    loadJson("data/liquid-spectrum-scenes.json?v=4"),
+    waitForFonts(),
+  ]);
   renderer = new VectorRenderer(vectorData, "liquid");
   baseRoot.append(renderer.scene(vectorData.scenes.base, {
     className: "vectorBase",
     sceneName: "base",
   }));
   fitStage(stage, 1280, 720, "--liquid-scale");
+  stage.dataset.fontsReady = "true";
   renderScene();
   window.setTimeout(() => {
     interactionsReady = true;
@@ -226,5 +230,6 @@ async function initialize() {
 
 initialize().catch((error) => {
   console.error(error);
+  stage.dataset.fontsReady = "true";
   stage.textContent = "The Liquid Spectrum experience could not be loaded.";
 });
