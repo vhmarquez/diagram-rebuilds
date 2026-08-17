@@ -19,10 +19,14 @@ const phaseLabels = {
   optimization: "Optimization",
   liquidSpectrum: "Liquid Spectrum",
 };
+const selectablePhaseLabels = new Set(["Planning", "Delivery", "Operations", "Optimization"]);
 
 const stage = document.querySelector("#liquid-stage");
 const platform = navigator.userAgentData?.platform || navigator.platform || navigator.userAgent;
-stage.dataset.platform = /mac|iphone|ipad|ipod/i.test(platform) ? "macos" : "other";
+let platformName = "other";
+if (/mac|iphone|ipad|ipod/i.test(platform)) platformName = "macos";
+if (/windows|win32|win64/i.test(platform)) platformName = "windows";
+stage.dataset.platform = platformName;
 const baseRoot = document.querySelector("#liquid-base-root");
 const dimmerRoot = document.querySelector("#liquid-dimmer-root");
 const sceneRoot = document.querySelector("#liquid-scene-root");
@@ -89,6 +93,15 @@ function sceneSection(type, id, label) {
   return section;
 }
 
+function markSelectedPhaseLabel(scene) {
+  scene.querySelectorAll("foreignObject").forEach((foreignObject) => {
+    if (selectablePhaseLabels.has(foreignObject.textContent.trim())) {
+      foreignObject.firstElementChild?.classList.add("selectedPhaseLabel");
+    }
+  });
+  return scene;
+}
+
 function closeButton(label, className) {
   const button = document.createElement("button");
   button.className = `hotspot ${className}`;
@@ -122,11 +135,11 @@ function renderScene(focus = false) {
 
   if (activePhase) {
     const section = sceneSection("phase", activePhase, phaseLabels[activePhase] || "Liquid Spectrum");
-    section.append(renderer.scene(vectorData.scenes.phases[activePhase], {
+    section.append(markSelectedPhaseLabel(renderer.scene(vectorData.scenes.phases[activePhase], {
       className: "vectorOverlay",
       forceTopLevelVisible: true,
       sceneName: `phase-${activePhase}`,
-    }));
+    })));
     section.append(closeButton("Close lifecycle information", "sceneCloseHotspot"));
     sceneRoot.append(section);
   }
@@ -134,11 +147,11 @@ function renderScene(focus = false) {
   if (activeFeature) {
     const definition = features[activeFeature];
     const section = sceneSection("feature", activeFeature, definition.label);
-    section.append(renderer.scene(vectorData.scenes.features[activeFeature], {
+    section.append(markSelectedPhaseLabel(renderer.scene(vectorData.scenes.features[activeFeature], {
       className: "vectorOverlay",
       forceTopLevelVisible: true,
       sceneName: `feature-${activeFeature}`,
-    }));
+    })));
     section.append(closeButton(`Close ${definition.label}`, "featureCloseHotspot"));
 
     const previous = document.createElement("button");

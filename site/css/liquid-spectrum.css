@@ -91,6 +91,14 @@
   transform: translateY(-3px);
 }
 
+.stage[data-platform="macos"] .selectedPhaseLabel {
+  transform: translateY(-2px);
+}
+
+.stage[data-platform="windows"] .selectedPhaseLabel {
+  transform: translateY(1px);
+}
+
 .vectorBase {
   z-index: 1;
 }
