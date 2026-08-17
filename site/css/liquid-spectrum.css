@@ -78,6 +78,19 @@
   transform: translateY(-2px);
 }
 
+.stage[data-platform="macos"] :is(
+  [data-vector-component="5fb450d12bc33"],
+  [data-vector-component="5fb44fac2bc2a"],
+  [data-vector-component="5fb44dd62bc1a"],
+  [data-vector-component="5fb44c922bc0f"],
+  [data-vector-component="5fb44a532bbff"],
+  [data-vector-component="5f91ac3a95c46"],
+  [data-vector-component="65bd4048a866b"],
+  [data-vector-component="65bd4039a8644"]
+) foreignObject > div {
+  transform: translateY(-3px);
+}
+
 .vectorBase {
   z-index: 1;
 }
