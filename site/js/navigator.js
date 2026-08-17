@@ -1,6 +1,8 @@
 import { fitStage, waitForFonts } from "./common.js?v=2";
 
 const stage = document.querySelector("#navigator-stage");
+const platform = navigator.userAgentData?.platform || navigator.platform || navigator.userAgent;
+stage.dataset.platform = /windows|win32|win64/i.test(platform) ? "windows" : "other";
 const panels = [...stage.querySelectorAll("[data-panel]")];
 const controls = [...stage.querySelectorAll("[data-state-target]")];
 

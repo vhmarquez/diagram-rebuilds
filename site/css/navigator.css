@@ -162,6 +162,11 @@
   transition: opacity 300ms ease;
 }
 
+.stage[data-platform="windows"] .cta {
+  padding-top: 10px;
+  padding-bottom: 6px;
+}
+
 .panel > .cta {
   margin-top: var(--space-medium);
   margin-bottom: var(--space-medium);
