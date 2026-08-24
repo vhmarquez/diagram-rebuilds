@@ -112,7 +112,7 @@
 }
 
 .stage[data-platform="macos"] .stepButton {
-  padding-bottom: 4px;
+  padding-bottom: 2px;
   font-size: 14px;
 }
 
@@ -1036,7 +1036,7 @@
 }
 
 .stage[data-platform="macos"] .productHotspot {
-  padding-bottom: 4px;
+  padding-bottom: 2px;
 }
 
 .stage[data-platform="macos"] .channelizedAseLabel,
@@ -1049,7 +1049,7 @@
 }
 
 .stage[data-platform="macos"] .cBandLabel {
-  transform: translateX(-2px);
+  transform: translateY(-1px);
 }
 
 .stage[data-platform="macos"][data-active-step="2"] .cBandWavelengthsLabel,
@@ -1060,7 +1060,7 @@
 }
 
 .stage[data-platform="macos"][data-active-step="3"] .lBandLabel {
-  transform: translateX(-1px);
+  transform: translateY(-1px);
 }
 
 .roadmHotspot {
