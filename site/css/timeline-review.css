@@ -1,0 +1,11 @@
+/* Temporary full-size scrolling mode for timeline review. */
+.viewer {
+  overflow: auto;
+}
+
+.stage {
+  top: 0;
+  left: 0;
+  transform: none;
+  transform-origin: top left;
+}

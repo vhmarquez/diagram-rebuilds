@@ -18,6 +18,19 @@
   text-rendering: geometricPrecision;
 }
 
+.timelineDateMarker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3px;
+  background: #dc0000;
+  color: #ffffff;
+  font-family: "Aktiv Grotesk", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .fadeDown {
   animation: fade-down 800ms ease both;
 }

@@ -2,6 +2,12 @@ import { fitStage, loadJson, setStyles, siteUrl, waitForFonts } from "./common.j
 
 const STAGE_WIDTH = 1280;
 const STAGE_HEIGHT = 4500;
+const TIMELINE_BAR_CENTER = 652;
+const dateMarkers = new Map([
+  ["5c3509e136b9e", "1992"],
+  ["5bf45d0769570", "2025"],
+]);
+const dateMarkerTextIds = new Set(["5c3509e136b9d", "5c1a77ae625a8"]);
 const stage = document.querySelector("#timeline-stage");
 
 function weightForGuid(guid) {
@@ -22,13 +28,18 @@ function spanStyles(span = {}) {
 
 function positionStyles(component) {
   const border = Array.isArray(component.border) ? undefined : component.border;
+  const isLeftTimelineConnector = component.type === "shape-component"
+    && component.height === 5
+    && component.width === 103
+    && component.x < TIMELINE_BAR_CENTER;
   return {
     position: "absolute",
-    left: component.x || 0,
+    left: isLeftTimelineConnector ? 540 : component.x || 0,
     top: component.y || 0,
-    width: component.width ?? undefined,
+    width: isLeftTimelineConnector ? 107 : component.width ?? undefined,
     height: component.height ?? undefined,
     opacity: component.opacity ?? 1,
+    zIndex: isLeftTimelineConnector ? 1 : component.type === "group" ? 3 : undefined,
     transform: component.rotation ? `rotate(${component.rotation}deg)` : undefined,
     transformOrigin: "center",
     borderRadius: border?.radius || 0,
@@ -102,6 +113,20 @@ function renderNode(item, data, assetPaths) {
   }
 
   if (component.type === "image-component") {
+    const markerYear = dateMarkers.get(component.id);
+    if (markerYear) {
+      const marker = document.createElement("div");
+      marker.className = "timelineDateMarker";
+      marker.dataset.componentId = component.id;
+      marker.textContent = markerYear;
+      setStyles(marker, {
+        ...positionStyles(component),
+        left: TIMELINE_BAR_CENTER - component.width / 2,
+        zIndex: 4,
+      });
+      return marker;
+    }
+
     const source = component.image ? assetPaths.get(component.image) : undefined;
     if (!source) return null;
     const image = document.createElement("img");
@@ -111,11 +136,14 @@ function renderNode(item, data, assetPaths) {
     image.draggable = false;
     image.loading = "eager";
     image.src = source;
-    setStyles(image, { ...positionStyles(component), objectFit: "cover" });
+    image.classList.add("fadeDown");
+    setStyles(image, { ...positionStyles(component), objectFit: "cover", zIndex: 2 });
     return image;
   }
 
   if (component.type === "text-component") {
+    if (dateMarkerTextIds.has(component.id)) return null;
+
     const element = document.createElement("div");
     element.dataset.componentId = component.id;
     setStyles(element, {
