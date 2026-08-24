@@ -31,6 +31,10 @@
   line-height: 1;
 }
 
+.stage[data-platform="macos"] .timelineDateMarker {
+  padding-top: 0;
+}
+
 .fadeDown {
   animation: fade-down 800ms ease both;
 }

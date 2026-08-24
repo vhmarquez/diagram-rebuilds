@@ -9,6 +9,11 @@ const dateMarkers = new Map([
 ]);
 const dateMarkerTextIds = new Set(["5c3509e136b9d", "5c1a77ae625a8"]);
 const stage = document.querySelector("#timeline-stage");
+const platform = navigator.userAgentData?.platform || navigator.platform || navigator.userAgent;
+let platformName = "other";
+if (/mac|iphone|ipad|ipod/i.test(platform)) platformName = "macos";
+if (/windows|win32|win64/i.test(platform)) platformName = "windows";
+stage.dataset.platform = platformName;
 
 function weightForGuid(guid) {
   if (guid?.includes("67871a57")) return 700;
