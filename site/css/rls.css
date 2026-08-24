@@ -1031,6 +1031,10 @@
   padding-top: 4px;
 }
 
+.stage[data-platform="macos"] .productHotspot {
+  padding-bottom: 4px;
+}
+
 .stage[data-platform="macos"] .aseLabel {
   transform: translateY(-3px);
 }
