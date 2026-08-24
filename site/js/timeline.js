@@ -127,6 +127,7 @@ function renderNode(item, data, assetPaths) {
       setStyles(marker, {
         ...positionStyles(component),
         left: TIMELINE_BAR_CENTER - component.width / 2,
+        top: markerYear === "1992" ? 244 : component.y,
         zIndex: 4,
       });
       return marker;
