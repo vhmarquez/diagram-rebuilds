@@ -73,16 +73,17 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  border: 1px solid #a8b3ba;
+  border: 1px solid #1E1EC8;
   border-radius: 22px;
   background: #ffffff;
   padding: 0 10px;
-  color: #9ba5ae;
+  color: #1E1EC8;
   cursor: pointer;
   font: inherit;
   font-size: 16px;
   font-weight: 300;
   line-height: 20px;
+  opacity: 1;
   transition:
     color 200ms ease,
     background-color 200ms ease,
@@ -90,8 +91,8 @@
 }
 
 .stepButton[aria-pressed="true"] {
-  border-color: #3851a3;
-  background: #3851a3;
+  border-color: #1E1EC8;
+  background: #1E1EC8;
   color: #ffffff;
   font-weight: 400;
 }
@@ -101,8 +102,8 @@
 }
 
 .stepButton:hover {
-  border-color: #3851a3;
-  background: #3851a3;
+  border-color: #1E1EC8;
+  background: #1E1EC8;
   color: #ffffff;
 }
 
@@ -124,7 +125,7 @@
   z-index: 15;
   width: 4px;
   height: 119px;
-  background: #0089c9;
+  background: #960000;
   animation: rule-in 650ms ease 80ms both;
   transform-origin: top;
 }
@@ -168,7 +169,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  color: #000000;
+  color: #960000;
   content: "•";
   font-size: 24px;
   line-height: 17px;
@@ -982,7 +983,7 @@
   width: 145px;
   height: 35px;
   border-radius: 22px;
-  background: #f68e00;
+  background: #FF7300;
   color: #ffffff;
   font-size: 16px;
   font-weight: 300;
@@ -999,10 +1000,10 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  border: 2px solid #f18a00;
+  border: 2px solid #FF7300;
   border-radius: 44px;
   padding: 0 20px;
-  background: #f18a00;
+  background: #FF7300;
   color: #ffffff;
   cursor: pointer;
   font-family: "Aktiv Grotesk", Arial, Helvetica, sans-serif;
@@ -1018,7 +1019,7 @@
 
 .productHotspot:hover {
   background: #ffffff;
-  color: #f18a00;
+  color: #FF7300;
 }
 
 .stage[data-platform="windows"] .productHotspot {
