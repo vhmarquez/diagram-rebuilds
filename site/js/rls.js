@@ -36,7 +36,6 @@ const steps = {
 };
 
 const stepDuration = { 1: 2500, 2: 2600, 3: 3200, 4: 3800 };
-const aseLabels = new Set(["Channelized ASE", "Bulk ASE"]);
 const stage = document.querySelector("#rls-stage");
 const platform = navigator.userAgentData?.platform || navigator.platform || navigator.userAgent;
 let platformName = "other";
@@ -94,7 +93,8 @@ function markPlatformLabels(scene) {
     const label = foreignObject.textContent.trim().replace(/\s+/g, " ");
     const normalizedLabel = label.toLowerCase();
     const text = foreignObject.firstElementChild;
-    if (aseLabels.has(label)) text?.classList.add("aseLabel");
+    if (label === "Channelized ASE") text?.classList.add("channelizedAseLabel");
+    if (label === "Bulk ASE") text?.classList.add("bulkAseLabel");
     if (label === "C-band λ") text?.classList.add("cBandLabel");
     if (normalizedLabel === "c-band wavelengths") text?.classList.add("cBandWavelengthsLabel");
     if (normalizedLabel === "l-band wavelengths") text?.classList.add("lBandWavelengthsLabel");

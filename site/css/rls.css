@@ -1039,8 +1039,13 @@
   padding-bottom: 4px;
 }
 
-.stage[data-platform="macos"] .aseLabel {
+.stage[data-platform="macos"] .channelizedAseLabel,
+.stage[data-platform="macos"] .bulkAseLabel {
   transform: translateY(-3px);
+}
+
+.stage[data-platform="macos"][data-active-step="2"] .channelizedAseLabel {
+  transform: translateY(-2px);
 }
 
 .stage[data-platform="macos"] .cBandLabel {
