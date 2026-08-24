@@ -111,6 +111,11 @@
   padding-top: 4px;
 }
 
+.stage[data-platform="macos"] .stepButton {
+  padding-bottom: 4px;
+  font-size: 14px;
+}
+
 .stepButton:focus-visible,
 .productHotspot:focus-visible,
 .closeButton:focus-visible {
