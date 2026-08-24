@@ -92,9 +92,13 @@ function updateControls() {
 function markPlatformLabels(scene) {
   scene.querySelectorAll("foreignObject").forEach((foreignObject) => {
     const label = foreignObject.textContent.trim().replace(/\s+/g, " ");
+    const normalizedLabel = label.toLowerCase();
     const text = foreignObject.firstElementChild;
     if (aseLabels.has(label)) text?.classList.add("aseLabel");
     if (label === "C-band λ") text?.classList.add("cBandLabel");
+    if (normalizedLabel === "c-band wavelengths") text?.classList.add("cBandWavelengthsLabel");
+    if (normalizedLabel === "l-band wavelengths") text?.classList.add("lBandWavelengthsLabel");
+    if (normalizedLabel === "l-band λ") text?.classList.add("lBandLabel");
   });
   return scene;
 }

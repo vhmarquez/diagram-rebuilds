@@ -1034,6 +1034,17 @@
   transform: translateX(-2px);
 }
 
+.stage[data-platform="macos"][data-active-step="2"] .cBandWavelengthsLabel,
+.stage[data-platform="macos"][data-active-step="3"] .cBandWavelengthsLabel,
+.stage[data-platform="macos"][data-active-step="4"] .cBandWavelengthsLabel,
+.stage[data-platform="macos"][data-active-step="4"] .lBandWavelengthsLabel {
+  transform: translateY(-3px);
+}
+
+.stage[data-platform="macos"][data-active-step="3"] .lBandLabel {
+  transform: translateX(-1px);
+}
+
 .roadmHotspot {
   top: 592px;
   left: 78px;
