@@ -10,7 +10,7 @@
   top: 0;
   left: 50%;
   width: 1280px;
-  height: 4500px;
+  height: 4800px;
   overflow: hidden;
   transform: translateX(-50%) scale(var(--timeline-scale));
   transform-origin: top center;
@@ -33,6 +33,42 @@
 
 .stage[data-platform="macos"] .timelineDateMarker {
   padding-top: 0;
+}
+
+.timelineCard {
+  position: absolute;
+  width: 305px;
+  z-index: 3;
+  font-family: "Aktiv Grotesk", Arial, sans-serif;
+}
+
+.timelineCardImage {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.timelineCardContent {
+  box-sizing: border-box;
+  padding: 20px;
+  background: #ffffff;
+}
+
+.timelineCardDate {
+  margin-bottom: 4px;
+  color: #d31924;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.timelineCardDescription {
+  color: #000000;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 20px;
 }
 
 .fadeDown {
