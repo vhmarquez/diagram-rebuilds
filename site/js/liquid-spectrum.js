@@ -51,12 +51,13 @@ function selectedPhase() {
 
 function updateControls() {
   const selected = selectedPhase();
+  const featureSceneLocked = hasUserInteracted && Boolean(activeFeature);
   featureButtons.forEach((button) => {
     button.disabled = !interactionsReady || Boolean(activeFeature);
     button.setAttribute("aria-pressed", String(button.dataset.featureTarget === activeFeature));
   });
   phaseButtons.forEach((button) => {
-    button.disabled = !interactionsReady || Boolean(activeFeature);
+    button.disabled = !interactionsReady || featureSceneLocked;
     button.setAttribute("aria-pressed", String(button.dataset.phaseTarget === selected));
   });
 }
@@ -188,7 +189,8 @@ function showFeature(feature, trigger = null) {
 }
 
 function showPhase(phase, trigger) {
-  if (!interactionsReady || transitionLocked || closing || activeFeature) return;
+  const featureSceneLocked = hasUserInteracted && Boolean(activeFeature);
+  if (!interactionsReady || transitionLocked || closing || featureSceneLocked) return;
   lastTrigger = trigger;
   hasUserInteracted = true;
   activeFeature = null;
